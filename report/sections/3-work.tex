@@ -1,0 +1,234 @@
+\section{Current Work} \label{work}
+
+Previously, I was working on a survey of quantum programming languages.
+% 
+This work has since been completed, and I have attached the paper in \cref{appendix-survey}.
+% 
+I submitted this to ACM Transactions On Quantum Computing (TQC) in February, and it was recently rejected.
+% 
+The reason given for this was that it was not clear that the revisions required for publication could be completed in a definite 
+amount of time.
+% 
+However, the editor informed me that if the revisions were completed, I would be welcome to submit again as a new submission.
+% 
+Thus, I am aiming to resubmit a revised version again to TQC by October.
+
+
+\input{report/diagrams/ccf-diagram}
+
+One of the key findings of that paper was a taxonomy for quantum programming languages, based on the 
+degree of control flow allowed in the program.
+% 
+I have included the ``CCF lattice'' as figure \ref{fig:ccf-diagram}.
+% 
+After my last APR, I set out to produce a \emph{modular semantics} for this lattice.
+% 
+I wanted to produce a family of languages, one for each point in the lattice, related by adding 
+simple syntactic features.
+% 
+For each, I would then produce a semantics, which would provide a way to understand how these different languages relate to
+each other.
+% 
+To that end, I have been working on a mechanisation of semantics for QPLs in Lean \cite{De_Moura_2021_lean4}.
+% 
+At present, I have a fully mechanised semantics for two languages, which I name \emph{Unitary} and \emph{Circuit}. 
+% 
+Both of these languages lie at point F in the CCF lattice, though the difference does require a different approach for formalising Circuit.
+
+
+\subsection{Unitary Language}
+For both languages, I define commands as an inductive data type.
+%
+Unitary programs are parameterised by a natural number $q$, which indicates the bit-width
+of the circuit the program represents. 
+% 
+Programs in Unitary consist only of gate applications --- there is no measurement or allocation. 
+% 
+As a result, the semantics of Unitary can be comparatively simple and can be represented by matrix of the correct size.
+% 
+A program on $q$ qubits is represented by a $2^q \times 2^q$ matrix, representing a transformation of the corresponding state vector.
+% 
+As all unitary programs terminate, a concrete denotation can be computed.
+% 
+It is therefore simple to prove equivalence of programs --- the denotation of each side of the equality can be computed 
+and compared directly.
+% 
+The programs are equivalent exactly when the denotations are equivalent.
+
+
+In contrast to projects like VoQC and QWIRE, I have chosen not to use \emph{phantom types} \cite{Rand_Paykin_2018_phantom_types} for my semantics.
+% 
+In the context of semantics for QPL, ``phantom types'' is a technique wherein the the size of the matrix is encoded in the type, 
+but not enforced in the implementation.
+% 
+The advantage of this is that certain features are simpler to implement, as there is no proof burden immediately at the site of implementation.
+% 
+Instead, the correctness proof is done separately.
+% 
+However, I have chosen to use Lean's mathlib \cite{mathlib} which already includes a definition of matrices.
+% 
+Mathlib's built-in matrices do not use phantom types, and I judged the advantage of the matrix formalism being already well 
+established, with an associated collection of proofs to boot, outweighed any potential advantages of a phantom types implementation.
+
+
+
+\subsection{Circuit Language}
+In contrast, the Circuit language is more complicated.
+% 
+We add three new commands: measurement, allocation, and freeing.
+% 
+The addition of these allocation primitives means that the bitwidth of the circuit can change 
+throughout the program.
+% 
+To accomodate this fact, the inductive type is parametrised by two natural numbers, $i$ and $o$. 
+% 
+These represent, respectively, the input and output bitwidth of the program.
+% 
+For example, a \texttt{Command 0 1} program accepts 0 qubits as input, and produces a state with a single qubit in the output.
+
+
+Because we are now working with measurement, state-vectors are no longer sufficient to represent the state of the program,
+and we must move up to a mixed state representation.
+% 
+In this case, I chose density operators. 
+% 
+At this stage, there is no classical data, and so density operators remain a good choice.
+% 
+However, the addition of measurement means a representation as matrices is no longer sufficient.
+% 
+Our semantics remains denotational, but it is now more general:
+the semantics of a program in Circuit is a function from density operators of size $i$ to density operators of size $o$.
+
+
+\subsection{Next Steps}
+Both Unitary and Circuit represent languages at point F in the CCF lattice.
+% 
+The next obvious step is to consider the next point up: CC.
+% 
+This corresponds to adding an ``if'' command to the language, which executes some body of code if some classical condition holds.
+% 
+There are two possible ways to give a semantics to a language at CC, which I will now discuss.
+
+
+The first is again in terms of density operators, which I will refer to as ``Knill-style''.
+% 
+In a Knill-style semantics, classical and quantum data is represented in the same way.
+% 
+They are differentiated only by convention --- classical data is always in a basis state, and thus acts like classical data.
+% 
+For this invariant to hold, the language must make a guarantee that classical registers will never be used as quantum registers.
+% 
+This basic ideas was first suggested by Knill for his quantum pseudocode \cite{Knill_1996_Pseudocode}.
+
+
+The major advantage of a knill-style semantics is the simplicity of the state objects.
+% 
+The entire state of the computer is represented by a single density operator --- including the classical components.
+% 
+For certain applications, this may make reasoning easier, as we can work entirely within matrices and linear transformations.
+% 
+For instance, conditional gate applications from if statements can be represented simply as controlled gates.
+% 
+However, enforcing the invariant that classical and quantum data is separate is quite challenging. 
+
+
+A basic observation is that any knill-style hybrid state $\rho$ can be factored:
+
+$$
+\rho = \rho' \otimes \left(\bigotimes_i \ket{1/0}\bra{1/0}\right)
+$$
+
+\noindent In other words, it can be split into some entangled quantum part ($\rho'$) and some maximally disentangled classical part ($\bigotimes_i \ket{1/0} \bra{1/0}$),
+which is really some product of basis states.
+% 
+This fact can be used to show that the semantics indeed treats classical data properly as classical, and never puts it into superposition ---
+it should hold for any sensible semantics.
+% 
+If we wish to work constructively, then it is also not good enough to know that such a factoring exists;
+Instead, we need to know precisely how to factor the state in this way.
+%  
+The simplest way to achieve this is to ensure that the state is \emph{always} organised this way.
+% 
+However, this makes allocation more complicated to implement, as we must always shuffle a new qubit into the correct place before continuing.
+% 
+Similarly, we must track the indices carefully to ensure that we do not end up referencing a classical bit instead of a qubit.
+% 
+We can structure our command to enforce this invariant, but proving that valid commands always respect the invariant in lean is not trivial.
+% 
+Furthermore, adding any additional features for manipulating classical data becomes much more cumbersome,
+as it must be implement effectively as a linear transformation on the corresponding density operator.
+% 
+These problems are each not simple to handle, and in my view, negate the advantages of a knill-style semantics.
+
+
+For ths reason, I am disinclined to use a knill-style semantics for the language at CC.
+% 
+Instead, I am leaning towards using a generalised ensemble state style semantics.
+% 
+Here, each fragment of the state is really a triple: the probability of the fragment, the associated (pure) quantum state, and the associated classical state.
+
+
+In this style of semantics, the classical state is represented totally separately from the quantum state. 
+% 
+This has many advantages.
+% 
+Firstly, allocation can remain a relatively simple process, just tensoring in a new qubit on the end of the quantum sate.
+% 
+Secondly, a regular classical representation is much more efficient that a representation in a density matrix.
+% 
+Finally, this representation is much better suited to handling more complex classical data.
+% 
+Operations can be defined however it is most convenient, without reference to a linear operator,
+and more complex objects like strings and integers do not need to be translated into a representation suitable for density operators.
+
+
+\subsubsection{Optimisation Lifting}
+It is comparatively easy to check program equivalence for programs in Unitary. 
+% 
+These equivalences can be used as the basis of optimisation.
+% 
+For example, we can prove that applying an $X$ gate twice is the same as doing nothing
+by comparing the program denotations.
+% 
+Proving this is easier in Unitary than it is in Circuit, but it is still true in the more powerful language.
+%  
+Indeed, it should be true in all languages in the family.
+% 
+It would therefore be useful if we could somehow \emph{lift} the optimisation up
+to more expressive languages in the lattice in a verified manner.
+
+
+One goal of this research then is to find a transformation that can take semantics preserving transformations 
+on the smaller languages, and produce an equivalent transformation on larger languages in the family that is still semantics preserving.
+% 
+One thing I am still considering is how to specify the correctness of this transformation.
+% 
+One condition that we certainly want to hold is that the following diagram should commute:
+
+\begin{figure}[h]
+    \centering
+    % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoAmAXVJADcBDAGwFcYkR6QBfU9TXfIRTkK1Ok1bt6Acm68QGbHgJEyxMQxZtEIAEZy+SwURHqamyTt2yuYmFADm8IqABmAJwgBbJGRA4IJABGcwltEFcQGkZ6XRhGAAV+ZSEQdywHAAscAwjPH0Q-AKQRf3osRnZMiAgAayjxLXYAHWbmNHp3TwB3AH19Hjd84JpixABmUfLKnWq6hotw1vbOnv6GmLjE5OMddKycwbzvEtHAiejY+KSjFR1GGFcc0KadZY6uiD6AIQACSNsXCAA
+    \begin{tikzcd}
+        b \arrow[rr, "\uparrow_A^B f"]                      &  & b'                                 \\
+                                                        &  &                                    \\
+        a \arrow[rr, "f"'] \arrow[uu, "\uparrow_A^B", hook] &  & a' \arrow[uu, "\uparrow_A^B"', hook]
+    \end{tikzcd}
+\end{figure}
+
+Here, $A$ and $B$ are languages, with $a, a' \in A$ and $b, b' \in B$.
+% 
+$f$ is a semantics preserving transformation (e.g. an optimisation) on $A$ that takes $a \to a'$.
+% 
+$\uparrow_A^B$ is an embedding function that takes programs in $A$ to programs in $B$.
+% 
+In this example, $\uparrow_A^B a = b$ and $\uparrow_A^B a' = b'$.
+% 
+The lifted transformation $\uparrow_A^B f$ should have the same action as $f$ 
+in the sense that it does not matter if we first apply $f$ and then embed into $B$,
+or if we first embed into $B$ and then apply the lifted function $\uparrow_A^B f$.
+% 
+In other words, we want $\uparrow_A^B$ to be \emph{functorial} in some sense
+
+
+% verification of some simple example programs -> plan to speak to Youssef about verifying some of his work.
+

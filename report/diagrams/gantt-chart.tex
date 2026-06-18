@@ -1,0 +1,30 @@
+\begin{figure}
+\begin{tikzpicture}
+    \begin{ganttchart}[
+      vgrid, 
+      hgrid,
+      today=7,
+      hgrid style/.style={draw=black!5, line width=.75pt},
+      canvas/.append style={name=gantt-chart-canvas}
+      ]{1}{14}
+      \gantttitle{Year 1}{4}
+      \gantttitle{Year 2}{4}
+      \gantttitle{Year 3}{4}
+      \gantttitle{Year 4}{2}\\
+      \gantttitlelist{1,...,14}{1} \\
+      \ganttbar{Survey Paper}{2}{5}\\
+      \ganttmilestone{Survey Paper 1\ts{st} submission}{5}\\
+      \ganttbar{Mechanised Semantics for Simple QPLs}{6}{7}\\
+      \ganttmilestone{Survey Paper 2\ts{nd} submission}{8}\\
+      \ganttmilestone{Workshop paper on Mechanised semantics}{9}\\
+      \ganttbar{Mechanised Semantics for hybrid QPLs}{8}{11}\\
+      \ganttbar{Investigate optimisating lifting techniques}{9}{11}\\
+      \ganttmilestone{Conference Paper on Mechanised semantics}{11}\\
+      \ganttbar{Writeup}{12}{14}\\
+      \ganttmilestone{Submit Thesis}{14} 
+\end{ganttchart}
+\node [left] at ([yshift=-0.3cm]gantt-chart-canvas.north west) {Year of Ph.D.};
+\node [left] at ([yshift=-1.3cm]gantt-chart-canvas.north west) {Quarter of Ph.D.};
+\end{tikzpicture}
+\caption{\label{chart} Gantt Chart Showing Work Plan for Ph.D.}
+\end{figure}

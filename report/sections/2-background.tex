@@ -1,0 +1,332 @@
+\section{Background} \label{background}
+A qubit $\ket \psi$ is described as
+
+\begin{gather*}
+    \ket{\psi} = \alpha \zero + \beta \one \\
+    \text{for some }\ \alpha, \beta \in \mathbb C \quad \quad
+    |\alpha|^2 + |\beta|^2 = 1
+\end{gather*}
+
+\noindent The coefficients $\alpha$ and $\beta$ (called the amplitudes)
+relate to the probability of measuring the qubit as either 0 or 1, respectively:
+
+\begin{align*}
+  P(0) &= |\alpha|^2\\
+  P(1) &= |\beta|^2
+\end{align*}
+
+\noindent Measurement is destructive: After measuring a qubit, 
+it will ``collapse'' into one of the basis states
+($\zero$ or $\one$).
+% 
+Multiple qubit states are described in a similar way:
+
+\begin{gather*}
+    \ket{\psi} = \alpha \ket{00} + \beta \ket {01} + \gamma \ket{10} + \delta \ket {11} \\
+    \text{for some } \alpha, \beta, \gamma, \delta \in \mathbb C \\
+    |\alpha|^2 + |\beta|^2 + |\gamma|^2 + |\delta|^2 = 1
+\end{gather*}
+
+\noindent Where again the coefficients relate to the probability of 
+measuring the qubit in the corresponding basis state.
+% 
+This notation (known as dirac or ``bra-ket'' notation) is 
+in reality just a way of working with vectors. 
+A qubit is a vector:
+
+$$
+\ket {\psi} = \alpha \zero + \beta \one = \begin{bmatrix}
+  \alpha \\ \beta
+\end{bmatrix}
+$$
+
+\noindent For multi-qubit states, the rows count up in binary:
+
+$$
+\ket \phi = \alpha \ket {00} + \beta \ket {01} +  \gamma \ket{10} + \delta \ket{11} = 
+\begin{bmatrix}
+  \alpha \\ \beta \\ \gamma \\ \delta
+\end{bmatrix}
+$$
+
+Some qubit states can be described as a tensor (really Kronecker) product between two sub-states:
+
+$$
+    \ket {00} = \ket 0 \otimes \ket 0
+$$
+
+\noindent In this case, we say that the two sub-components of the state are \emph{separable}. 
+% 
+However, some multi-qubit states also exist which cannot be described in such a manner. 
+% 
+Take for instance:
+
+$$
+  \ket {\psi _+} = \frac{1}{\sqrt 2} \left( \ket {00} + \ket{11} \right)
+$$
+
+\noindent We call these non-separable states \emph{entangled}. 
+% 
+It is not possible to fully describe entangled states compositionally.
+% 
+Measuring one qubit in an entangled pair collapses not only that qubit's state, but also that of its entangled partner. 
+% 
+For example, consider the $\ket{\psi _+}$ state from above --- both qubits must have the same value.
+% 
+Thus, after measuring one of them, the second will also collapse into the same basis state.
+% 
+Einstein called this ``spooky action at a distance'', and is an example of non-local behaviour. 
+% 
+This is what prevents us from discussing entangled qubits in a compositional manner.
+
+
+One final important thing to note about qubits is that they are logically linear resources.
+% 
+When you apply a gate to a qubit, you mutate that qubit. 
+% 
+The no cloning theorem \cite{Wootters_1982_NoCloning} states that we cannot have a transformation that gives:
+
+$$
+  \forall \ket\phi, \ket{\phi} \Rightarrow \ket{\phi} \otimes \ket{\phi}
+$$
+
+\noindent i.e. returns two independent copies of $\ket{\phi}$. 
+% 
+Thus the use of data that a given qubit represents must be linear.
+
+\subsection{Gates}
+We must be able to manipulate qubits for them to be useful; This is done with quantum gates.
+% 
+As we have seen, qubits are described by vectors. 
+% 
+It should be no surprise then that gates are described by matrices.
+% 
+A simple example is the Pauli \X\ gate, which is described below:
+
+$$
+  \X = \begin{bmatrix}
+    0 & 1 \\
+    1 & 0
+  \end{bmatrix}
+$$
+
+\noindent This is often called the ``quantum not'' operation, as it behaves as a not gate on basis states; 
+taking $\zero$ to $\one$ and vice versa.
+
+Multi-qubit gates also exist, and we should pay particular attention to a class of gates called ``controlled'' gates.
+% 
+These gates apply a particular operator to a qubit \emph{if and only if} the second ``control'' bit is set.
+% 
+Here for instance is the \CNOT\ (sometimes \CX) gate:
+
+$$
+\X = \begin{bmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 0 & 1 \\
+  0 & 0 & 1 & 0
+\end{bmatrix}
+$$
+
+\noindent This applies \X\ to the second bit in a pair, if and only if the first bit is $\one$.
+% 
+It's important to note that controlled gates maintain coherence. 
+% 
+That is to say, if the control bit is in some non-basis state, controlled gates do not measure and collapse the state.
+% 
+Rather, the operation is applied in a manner that propagates the amplitudes across the other qubit. 
+% 
+This is readily apparent after working through a few examples.
+
+
+A general $n$-bit quantum gate is a square ($2^n \times 2^n$), complex-valued matrix.
+% 
+The probability across all outcomes when measuring a qubit must be 1 --- 
+this is what leads us to the qubit normalisation condition.
+% 
+It also results in a corollary condition for gates, which must maintain this property: 
+All quantum gates must therefore be unitary. 
+% 
+This has other (potentially surprising) results for quantum information theory.
+% 
+For instance, all unitary operators are reversible. 
+% 
+Therefore, all quantum computations formed of these gates must be reversible --- 
+the notable exception to this being measurement.
+
+
+Gates can of course also be combined, in two different ways:
+% 
+Tensoring can be used to apply a gate to a subset of qubits in a larger state.
+% 
+Gates can also be composed so as to act on a qubit serially.
+
+
+\begin{gather*}
+    \X \otimes \texttt{ID} \\ %\text{Apply \texttt{X} to the first bit, do nothing to the second}\\ % tensoring
+    \X \X %\text{Apply \texttt{X} to a single bit twice (effectively doing nothing)} % composition
+\end{gather*}
+
+
+\noindent Here, we use $\otimes$ to represent the tensoring operation; 
+so above $\X \otimes \texttt{ID}$ applies \X\ to the first bit, and does nothing to the second.
+% 
+In contrast, writing two gates adjacent to each other represents sequential application. 
+% 
+Thus $\X \X$ represents applying \X\ twice --- which is the same as the identity gate, and does nothing.
+
+
+
+\subsection{Mixed states}
+
+It is only so called \emph{pure} quantum states can be represented as a state vector. 
+% 
+These states represent either a basis state ($\ket 0, \ket 1$), or some superposition of basis states ($\ket{\psi _+}$).
+% 
+However, when we perform measurement, this is no longer sufficient.
+% 
+Measuring $\ket{\psi _+}$ for example produces a qubit that is in one of the two basis states, with even probability. 
+% 
+This is called a \emph{mixed state,} and the state vector representation cannot represent it as a single object. 
+% 
+We require an extension to handle this, and I will now discuss the two most common.
+
+
+\subsubsection{Density operators}
+
+The first representation is known as the \emph{density operator} formalism. 
+% 
+A pure state represented by a vector $\ket\psi$ can be converted to the equivalent density operator
+form by taking the outer product of $\ket\psi$ with itself.
+% 
+Some concrete examples are given below:
+
+
+
+$$ 
+  \ket 0 \bra 0 = \begin{bmatrix}
+    1 & 0 \\
+    0 & 0
+  \end{bmatrix}
+\quad\quad
+  \ket 1 \bra 1 = \begin{bmatrix}
+    0 & 0 \\
+    0 & 1
+  \end{bmatrix}
+\quad\quad
+  \ket{\psi_+} \bra{\psi_+} = \frac{1}{2} \begin{bmatrix}
+    1 & 1 \\
+    1 & 1
+  \end{bmatrix}
+$$
+
+Gate application can also be translated to the density operator formalism. 
+% 
+If the result of some gate application is $\ket\phi = G \ket\psi$, then the density operator equivalent is $\ket\phi \bra\phi$.
+% 
+Recall that $\bra\phi$ is the conjugate transpose of $\ket\phi$. 
+% 
+Thus, $\bra\phi = \bra\psi G^\dagger$.
+% 
+In general, a gate application is a multiplication on the left by $G$ and on the right by $G^\dagger$, vis.
+
+$$
+  G \ket \psi \xrightarrow[]{\text{becomes}} G \ket \psi \bra \psi G^\dagger
+$$
+
+\noindent And although we motivate this by considering an example on pure states, this in fact works for arbitrary density operators $\rho$.
+
+
+The major advantage of the density operator formalism is that it provides a way to express the action of measurement.
+% 
+A measurement is defined by a collection of bases, onto which the state is projected. 
+% 
+If we take the outer product of some measurement basis $p_i$ with itself, we obtain a matrix, known as the projector for that basis. 
+% 
+For example, here are the projectors for the standard ($Z$) basis:
+
+$$
+  \texttt{MFalse} = \ket0  \bra0 = \begin{bmatrix}
+    1 & 0 \\
+    0 & 0
+  \end{bmatrix}
+  \quad \quad
+  \texttt{MTrue} = \ket1  \bra1 = \begin{bmatrix}
+    0 & 0 \\
+    0 & 1
+  \end{bmatrix}
+$$
+
+
+\noindent Multiplying a state by a projector yields a new quantum state, which represents the state
+of the system assuming that the corresponding outcome is the result of the measurement.
+% 
+i.e. multiplying a state by \texttt{MTrue} yields the state assuming the measurement reads
+$\ket 1$.
+
+
+In the state vector formalism, we are forced to discuss outcomes piecewise, one at a time.
+% 
+However, in the density operator formalism, we can construct an object which represents all of the outcomes at once. 
+% 
+We do this by simply adding the possible outcomes together.
+% 
+Let us say that we have a set of bases with projectors $M_m$.
+% 
+Then, if we want to measure $\rho$ to get $\rho'$,
+the density operator which represents this is given by:
+
+$$
+\rho' = \sum_m M_m \rho M_m^\dagger
+$$
+
+\noindent For a concrete example, measuring in the $Z$ basis looks like:
+
+$$
+\texttt{Meas}(\rho) = \texttt{MTrue}\ \rho\ \texttt{MTrue}^\dagger + \texttt{MFalse}\ \rho\ \texttt{MFalse}^\dagger
+$$
+
+\noindent And so measuring the $\ket{\psi_+}$ state gives:
+
+$$
+\texttt{MTrue}\ket{\psi_+}\bra{\psi_+} \texttt{MTrue}^\dagger + \texttt{MFalse}\ket{\psi_+}\bra{\psi_+} \texttt{MFalse}^\dagger
+= \frac{1}{2} \begin{bmatrix}
+  1 & 0\\
+  0 & 1
+\end{bmatrix}
+$$
+
+
+\noindent Note that we are effectively \emph{zeroing out} the off-diagonal entries.
+
+
+This formalism can make defining the semantics of a language much easier. 
+% 
+It allows us to work with a single object representing any state, rather than include a probabilistic component in the definition of the semantics itself.
+
+\subsubsection{Ensemble States} 
+
+The other formalism ƒor mixed states we will consider is ensemble states.
+% 
+At their simplest, ensemble states are just a list of potential pure states (say represented as state
+vectors or as density matrices), along with the probability associated with each one. 
+% 
+Ensemble states are equivalent to density operators. 
+% 
+If we represent the pure states by their , and regard the list instead as a sum, 
+then an ensemble state provides a way to compute the corresponding density operator:
+
+$$
+  \rho = \sum_i p_i \ket{\psi_i} \bra{\psi_i}
+$$
+
+I present ensemble states separately to density operators because the fact that they are
+always described in terms of pure states can be useful.
+% 
+If we generalise away from the notion that the ``state'' component must be only quantum,
+then ensemble states can provide a much more elegant way to handle hybrid (i.e. quantum-classical) states.
+% 
+I will discuss this in more detail in \cref{work}.
+
+
+A complete introduction to quantum computing and the mathematics underpinning it can be found in \cite{Nielsen_Chuang_2010_Bible}.

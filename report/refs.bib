@@ -1,167 +1,257 @@
-@article{Fu_2023_quipper,
-    author = {Fu, Peng and Kishida, Kohei and Ross, Neil J. and Selinger, Peter},
-    title = {Proto-Quipper with Dynamic Lifting},
-    year = {2023},
-    issue_date = {January 2023},
-    publisher = {Association for Computing Machinery},
-    address = {New York, NY, USA},
-    volume = {7},
-    number = {POPL},
-    url = {https://doi.org/10.1145/3571204},
-    doi = {10.1145/3571204},
-    abstract = {Quipper is a functional programming language for quantum computing. Proto-Quipper is a family of languages aiming to provide a formal foundation for Quipper. In this paper, we extend Proto-Quipper-M with a construct called dynamic lifting, which is present in Quipper. By virtue of being a circuit description language, Proto-Quipper has two separate runtimes: circuit generation time and circuit execution time. Values that are known at circuit generation time are called parameters, and values that are known at circuit execution time are called states. Dynamic lifting is an operation that enables a state, such as the result of a measurement, to be lifted to a parameter, where it can influence the generation of the next portion of the circuit. As a result, dynamic lifting enables Proto-Quipper programs to interleave classical and quantum computation. We describe the syntax of a language we call Proto-Quipper-Dyn. Its type system uses a system of modalities to keep track of the use of dynamic lifting. We also provide an operational semantics, as well as an abstract categorical semantics for dynamic lifting based on enriched category theory. We prove that both the type system and the operational semantics are sound with respect to our categorical semantics. Finally, we give some examples of Proto-Quipper-Dyn programs that make essential use of dynamic lifting.},
-    journal = {Proc. ACM Program. Lang.},
-    month = jan,
-    articleno = {11},
-    numpages = {26},
-    keywords = {quantum programming languages, dynamic lifting, categorical semantics, Quipper, Proto-Quipper}
-}
-
 @article{Green_2013_Quipper,
-  author       = {Alexander S. Green and
-                  Peter LeFanu Lumsdaine and
-                  Neil J. Ross and
-                  Peter Selinger and
-                  Beno{\^{\i}}t Valiron},
   title        = {Quipper: {A} Scalable Quantum Programming Language},
+  author       = {Alexander S. Green and Peter LeFanu Lumsdaine and Neil J. Ross and Peter Selinger and Beno{\^{\i}}t Valiron},
+  year         = 2013,
   journal      = {CoRR},
   volume       = {abs/1304.3390},
-  year         = {2013},
   url          = {http://arxiv.org/abs/1304.3390},
-  eprinttype    = {arXiv},
+  eprinttype   = {arXiv},
   eprint       = {1304.3390},
   timestamp    = {Mon, 13 Aug 2018 16:47:28 +0200},
   biburl       = {https://dblp.org/rec/journals/corr/abs-1304-3390.bib},
   bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
+@inproceedings{Green_2013_Quantum_Programming,
+  title        = {An Introduction to Quantum Programming in Quipper},
+  author       = {Green, Alexander S. and Lumsdaine, Peter LeFanu and Ross, Neil J. and Selinger, Peter and Valiron, Beno{\^i}t},
+  year         = 2013,
+  booktitle    = {Reversible Computation},
+  publisher    = {Springer Berlin Heidelberg},
+  address      = {Berlin, Heidelberg},
+  pages        = {110--124},
+  isbn         = {978-3-642-38986-3},
+  editor       = {Dueck, Gerhard W. and Miller, D. Michael},
+  abstract     = {Quipper is a recently developed programming language for expressing quantum computations. This paper gives a brief tutorial introduction to the language, through a demonstration of how to make use of some of its key features. We illustrate many of Quipper's language features by developing a few well known examples of Quantum computation, including quantum teleportation, the quantum Fourier transform, and a quantum circuit for addition.}
+}
+
+@article{Fu_2023_Quipper_Dyn_Lift,
+  title        = {Proto-Quipper with Dynamic Lifting},
+  author       = {Fu, Peng and Kishida, Kohei and Ross, Neil J. and Selinger, Peter},
+  year         = 2023,
+  month        = {January},
+  journal      = {Proceedings of the ACM on Programming Languages},
+  volume       = 7,
+  number       = {POPL},
+  pages        = 11,
+  doi          = {10.1145/3571204},
+  url          = {https://gitlab.com/frank-peng-fu/dpq-remake},
+  eid          = 11,
+  archiveprefix = {arXiv},
+  eprint       = {2204.13041},
+  abstract     = {Quipper is a functional programming language for quantum computing. Proto-Quipper is a family of languages aiming to provide a formal foundation for Quipper. In this paper, we extend Proto-Quipper-M with a construct called dynamic lifting, which is present in Quipper. By virtue of being a circuit description language, Proto-Quipper has two separate runtimes: circuit generation time and circuit execution time. Values that are known at circuit generation time are called parameters, and values that are known at circuit execution time are called states. Dynamic lifting is an operation that enables a state, such as the result of a measurement, to be lifted to a parameter, where it can influence the generation of the next portion of the circuit. As a result, dynamic lifting enables Proto-Quipper programs to interleave classical and quantum computation. We describe the syntax of a language we call Proto-Quipper-Dyn. Its type system uses a system of modalities to keep track of the use of dynamic lifting. We also provide an operational semantics, as well as an abstract categorical semantics for dynamic lifting based on enriched category theory. We prove that both the type system and the operational semantics are sound with respect to our categorical semantics. Finally, we give some examples of Proto-Quipper-Dyn programs that make essential use of dynamic lifting.},
+  keywords     = {proto-quipper-dyn, proto-quipper-m, proto-quipper, quipper, quantum programming languages, categorical semantics, dynamic lifting},
+  webnote      = {POPL '23. Also see the companion paper \cite{Fu2022a}},
+  bibsource    = {Quantum Programming Languages \& Verification Bibliography, https://git.io/qpl-bib}
+}
+
+@article{Fu_2022_Quipper_Lin_Dep,
+  title        = {Linear Dependent Type Theory for Quantum Programming Languages},
+  author       = {Fu, Peng and Kishida, Kohei and Selinger, Peter},
+  year         = 2022,
+  month        = {September},
+  journal      = {Logical Methods in Computer Science},
+  volume       = 18,
+  number       = 3,
+  pages        = 28,
+  doi          = {10.46298/lmcs-18(3:28)2022},
+  eid          = 28,
+  abstract     = {Modern quantum programming languages integrate quantum resources and classical control. They must, on the one hand, be linearly typed to reflect the no-cloning property of quantum resources. On the other hand, high-level and practical languages should also support quantum circuits as first-class citizens, as well as families of circuits that are indexed by some classical parameters. Quantum programming languages thus need linear dependent type theory. This paper defines a general semantic structure for such a type theory via certain fibrations of monoidal categories. The categorical model of the quantum circuit description language Proto-Quipper-M by Rios and Selinger (2017) constitutes an example of such a fibration, which means that the language can readily be integrated with dependent types. We then devise both a general linear dependent type system and a dependently typed extension of Proto-Quipper-M, and provide them with operational semantics as well as a prototype implementation.},
+  keywords     = {proto-quipper-d, fibration, categorical model, quantum programming languages, linear dependent types, proto-quipper-m},
+  webnote      = {Expanded version of \cite{Fu2020}},
+  bibsource    = {Quantum Programming Languages \& Verification Bibliography, https://git.io/qpl-bib}
+}
+
+@inproceedings{Rios_2018_Quipper_M,
+  title        = {A Categorical Model for a Quantum Circuit Description Language (Extended Abstract)},
+  author       = {Rios, Francisco and Selinger, Peter},
+  year         = 2018,
+  month        = {February},
+  booktitle    = {Proceedings of the 14th International Conference on Quantum Physics and Logic (QPL), Nijmegen, the Netherlands, July 3--7, 2017},
+  publisher    = {Open Publishing Association},
+  address      = {Waterloo, NSW, Australia},
+  series       = {Electronic Proceedings in Theoretical Computer Science},
+  volume       = 266,
+  pages        = {164--178},
+  doi          = {10.4204/EPTCS.266.11},
+  editor       = {Coecke, Bob and Kissinger, Aleks},
+  abstract     = {Quipper is a practical programming language for describing families of quantum circuits. In this paper, we formalize a small, but useful fragment of Quipper called Proto-Quipper-M. Unlike its parent Quipper, this language is type-safe and has a formal denotational and operational semantics. Proto-Quipper-M is also more general than Quipper, in that it can describe families of morphisms in any symmetric monoidal category, of which quantum circuits are but one example. We design Proto-Quipper-M from the ground up, by first giving a general categorical model of parameters and state. The distinction between parameters and state is also known from hardware description languages. A parameter is a value that is known at circuit generation time, whereas a state is a value that is known at circuit execution time. After finding some interesting categorical structures in the model, we then define the programming language to fit the model. We cement the connection between the language and the model by proving type safety, soundness, and adequacy properties.},
+  keywords     = {proto-quipper-m, quipper},
+  bibsource    = {Quantum Programming Languages \& Verification Bibliography, https://git.io/qpl-bib}
+}
+
+@inproceedings{Fu_2020_Quipper_D,
+  title        = {A Tutorial Introduction to Quantum Circuit Programming in Dependently Typed Proto-Quipper},
+  author       = {Fu, Peng and Kishida, Kohei and Ross, Neil J. and Selinger, Peter},
+  year         = 2020,
+  month        = {July},
+  booktitle    = {Reversible Computation (RC '20)},
+  publisher    = {Springer International Publishing},
+  address      = {Cham},
+  series       = {Lecture Notes in Computer Science},
+  volume       = 12227,
+  pages        = {153--168},
+  doi          = {10.1007/978-3-030-52482-1_9},
+  editor       = {Lanese, Ivan and Rawski, Mariusz},
+  archiveprefix = {arXiv},
+  eprint       = {2005.08396},
+  abstract     = {We introduce dependently typed Proto-Quipper, or Proto-Quipper-D for short, an experimental quantum circuit programming language with linear dependent types. We give several examples to illustrate how linear dependent types can help in the construction of correct quantum circuits. Specifically, we show how dependent types enable programming families of circuits, and how dependent types solve the problem of type-safe uncomputation of garbage qubits. We also discuss other language features along the way.},
+  keywords     = {quantum programming languages, linear dependent types, proto-quipper-d},
+  bibsource    = {Quantum Programming Languages \& Verification Bibliography, https://git.io/qpl-bib}
+}
+
+@misc{Ross_2017_Quipper_S,
+  title        = {Algebraic and Logical Methods in Quantum Computation},
+  author       = {Neil J. Ross},
+  year         = 2017,
+  url          = {https://arxiv.org/abs/1510.02198},
+  eprint       = {1510.02198},
+  archiveprefix = {arXiv},
+  primaryclass = {quant-ph}
+}
+
+@misc{JavadiAbhari_2024_Qiskit,
+  title        = {Quantum computing with Qiskit},
+  author       = {Ali Javadi-Abhari and Matthew Treinish and Kevin Krsulich and Christopher J. Wood and Jake Lishman and Julien Gacon and Simon Martiel and Paul D. Nation and Lev S. Bishop and Andrew W. Cross and Blake R. Johnson and Jay M. Gambetta},
+  year         = 2024,
+  url          = {https://arxiv.org/abs/2405.08810},
+  eprint       = {2405.08810},
+  archiveprefix = {arXiv},
+  primaryclass = {quant-ph}
+}
 
 @inproceedings{JavadiAbhari_2014_ScaffCC,
-    author = {Javadi-Abhari, Ali and Patil, Shruti and Kudrow, Daniel and Heckey, Jeff and Lvov, Alexey and Chong, Frederic T. and Martonosi, Margaret},
-    title = {ScaffCC: a framework for compilation and analysis of quantum computing programs},
-    year = {2014},
-    isbn = {9781450328708},
-    publisher = {Association for Computing Machinery},
-    address = {New York, NY, USA},
-    url = {https://doi.org/10.1145/2597917.2597939},
-    doi = {10.1145/2597917.2597939},
-    booktitle = {Proceedings of the 11th ACM Conference on Computing Frontiers},
-    articleno = {1},
-    numpages = {10},
-    keywords = {reversible logic, quantum computation, compilers},
-    location = {Cagliari, Italy},
-    series = {CF '14}
+  title        = {ScaffCC: a framework for compilation and analysis of quantum computing programs},
+  author       = {Javadi-Abhari, Ali and Patil, Shruti and Kudrow, Daniel and Heckey, Jeff and Lvov, Alexey and Chong, Frederic T. and Martonosi, Margaret},
+  year         = 2014,
+  booktitle    = {Proceedings of the 11th ACM Conference on Computing Frontiers},
+  location     = {Cagliari, Italy},
+  publisher    = {Association for Computing Machinery},
+  address      = {New York, NY, USA},
+  series       = {CF '14},
+  doi          = {10.1145/2597917.2597939},
+  isbn         = 9781450328708,
+  url          = {https://doi.org/10.1145/2597917.2597939},
+  articleno    = 1,
+  numpages     = 10,
+  keywords     = {reversible logic, quantum computation, compilers}
 }
 
 @inproceedings{Penduri_2022_QSSA,
-    author = {Peduri, Anurudh and Bhat, Siddharth and Grosser, Tobias},
-    title = {QSSA: an SSA-based IR for Quantum computing},
-    year = {2022},
-    isbn = {9781450391832},
-    publisher = {Association for Computing Machinery},
-    address = {New York, NY, USA},
-    url = {https://doi.org/10.1145/3497776.3517772},
-    doi = {10.1145/3497776.3517772},
-    abstract = {Quantum computing hardware has progressed rapidly. Simultaneously, there has been a proliferation of programming languages and program optimization tools for quantum computing. Existing quantum compilers use intermediate representations (IRs) where quantum programs are described as circuits. Such IRs fail to leverage existing work on compiler optimizations. In such IRs, it is non-trivial to statically check for physical constraints such as the no-cloning theorem, which states that qubits cannot be copied. We introduce QSSA, a novel quantum IR based on static single assignment (SSA) that enables decades of research in compiler optimizations to be applied to quantum compilation. QSSA models quantum operations as being side-effect-free. The inputs and outputs of the operation are in one-to-one correspondence; qubits cannot be created or destroyed. As a result, our IR supports a static analysis pass that verifies no-cloning at compile-time. The quantum circuit is fully encoded within the def-use chain of the IR, allowing us to leverage existing optimization passes on SSA representations such as redundancy elimination and dead-code elimination. Running our QSSA-based compiler on the QASMBench and IBM Quantum Challenge datasets, we show that our optimizations perform comparably to IBM’s Qiskit quantum compiler infrastructure. QSSA allows us to represent, analyze, and transform quantum programs using the robust theory of SSA representations, bringing quantum compilation into the realm of well-understood theory and practice.},
-    booktitle = {Proceedings of the 31st ACM SIGPLAN International Conference on Compiler Construction},
-    pages = {2--14},
-    numpages = {13},
-    keywords = {quantum circuits, optimization, intermediate representations, compilers, SSA},
-    location = {Seoul, South Korea},
-    series = {CC 2022}
+  title        = {QSSA: an SSA-based IR for Quantum computing},
+  author       = {Peduri, Anurudh and Bhat, Siddharth and Grosser, Tobias},
+  year         = 2022,
+  booktitle    = {Proceedings of the 31st ACM SIGPLAN International Conference on Compiler Construction},
+  location     = {Seoul, South Korea},
+  publisher    = {Association for Computing Machinery},
+  address      = {New York, NY, USA},
+  series       = {CC 2022},
+  pages        = {2--14},
+  doi          = {10.1145/3497776.3517772},
+  isbn         = 9781450391832,
+  url          = {https://doi.org/10.1145/3497776.3517772},
+  abstract     = {Quantum computing hardware has progressed rapidly. Simultaneously, there has been a proliferation of programming languages and program optimization tools for quantum computing. Existing quantum compilers use intermediate representations (IRs) where quantum programs are described as circuits. Such IRs fail to leverage existing work on compiler optimizations. In such IRs, it is non-trivial to statically check for physical constraints such as the no-cloning theorem, which states that qubits cannot be copied. We introduce QSSA, a novel quantum IR based on static single assignment (SSA) that enables decades of research in compiler optimizations to be applied to quantum compilation. QSSA models quantum operations as being side-effect-free. The inputs and outputs of the operation are in one-to-one correspondence; qubits cannot be created or destroyed. As a result, our IR supports a static analysis pass that verifies no-cloning at compile-time. The quantum circuit is fully encoded within the def-use chain of the IR, allowing us to leverage existing optimization passes on SSA representations such as redundancy elimination and dead-code elimination. Running our QSSA-based compiler on the QASMBench and IBM Quantum Challenge datasets, we show that our optimizations perform comparably to IBM’s Qiskit quantum compiler infrastructure. QSSA allows us to represent, analyze, and transform quantum programs using the robust theory of SSA representations, bringing quantum compilation into the realm of well-understood theory and practice.},
+  numpages     = 13,
+  keywords     = {quantum circuits, optimization, intermediate representations, compilers, SSA}
 }
 
 @inproceedings{Bichsel_2020_Silq,
-    author = {Bichsel, Benjamin and Baader, Maximilian and Gehr, Timon and Vechev, Martin},
-    title = {Silq: a high-level quantum language with safe uncomputation and intuitive semantics},
-    year = {2020},
-    isbn = {9781450376136},
-    publisher = {Association for Computing Machinery},
-    address = {New York, NY, USA},
-    url = {https://doi.org/10.1145/3385412.3386007},
-    doi = {10.1145/3385412.3386007},
-    abstract = {Existing quantum languages force the programmer to work at a low level of abstraction leading to unintuitive and cluttered code. A fundamental reason is that dropping temporary values from the program state requires explicitly applying quantum operations that safely uncompute these values.  We present Silq, the first quantum language that addresses this challenge by supporting safe, automatic uncomputation. This enables an intuitive semantics that implicitly drops temporary values, as in classical computation. To ensure physicality of Silq's semantics, its type system leverages novel annotations to reject unphysical programs.  Our experimental evaluation demonstrates that Silq programs are not only easier to read and write, but also significantly shorter than equivalent programs in other quantum languages (on average -46\% for Q#, -38\% for Quipper), while using only half the number of quantum primitives.},
-    booktitle = {Proceedings of the 41st ACM SIGPLAN Conference on Programming Language Design and Implementation},
-    pages = {286--300},
-    numpages = {15},
-    keywords = {Quantum Language, Semantics, Uncomputation},
-    location = {London, UK},
-    series = {PLDI 2020}
+  title        = {Silq: a high-level quantum language with safe uncomputation and intuitive semantics},
+  author       = {Bichsel, Benjamin and Baader, Maximilian and Gehr, Timon and Vechev, Martin},
+  year         = 2020,
+  booktitle    = {Proceedings of the 41st ACM SIGPLAN Conference on Programming Language Design and Implementation},
+  location     = {London, UK},
+  publisher    = {Association for Computing Machinery},
+  address      = {New York, NY, USA},
+  series       = {PLDI 2020},
+  pages        = {286--300},
+  doi          = {10.1145/3385412.3386007},
+  isbn         = 9781450376136,
+  url          = {https://doi.org/10.1145/3385412.3386007},
+  abstract     = {Existing quantum languages force the programmer to work at a low level of abstraction leading to unintuitive and cluttered code. A fundamental reason is that dropping temporary values from the program state requires explicitly applying quantum operations that safely uncompute these values. We present Silq, the first quantum language that addresses this challenge by supporting safe, automatic uncomputation. This enables an intuitive semantics that implicitly drops temporary values, as in classical computation. To ensure physicality of Silq's semantics, its type system leverages novel annotations to reject unphysical programs.  Our experimental evaluation demonstrates that Silq programs are not only easier to read and write, but also significantly shorter than equivalent programs in other quantum languages (on average -46\% for Q#, -38\% for Quipper), while using only half the number of quantum primitives.},
+  numpages     = 15,
+  keywords     = {Quantum Language, Semantics, Uncomputation}
 }
 
-@inproceedings{Paradis_2021_Uncomp,
-author = {Paradis, Anouk and Bichsel, Benjamin and Steffen, Samuel and Vechev, Martin},
-title = {Unqomp: synthesizing uncomputation in Quantum circuits},
-year = {2021},
-isbn = {9781450383912},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/3453483.3454040},
-doi = {10.1145/3453483.3454040},
-abstract = {A key challenge when writing quantum programs is the need for uncomputation: temporary values produced during the computation must be reset to zero before they can be safely discarded. Unfortunately, most existing quantum languages require tedious manual uncomputation, often leading to inefficient and error-prone programs. We present Unqomp, the first procedure to automatically synthesize uncomputation in a given quantum circuit. Unqomp can be readily integrated into popular quantum languages, allowing the programmer to allocate and use temporary values analogously to classical computation, knowing they will be uncomputed by Unqomp. Our evaluation shows that programs leveraging Unqomp are not only shorter (-19\% on average), but also generate more efficient circuits (-71\% gates and -19\% qubits on average).},
-booktitle = {Proceedings of the 42nd ACM SIGPLAN International Conference on Programming Language Design and Implementation},
-pages = {222--236},
-numpages = {15},
-keywords = {Uncomputation, Synthesis, Quantum Circuits},
-location = {Virtual, Canada},
-series = {PLDI 2021}
+@inproceedings{Paradis_2021_Unqomp,
+  title        = {Unqomp: synthesizing uncomputation in Quantum circuits},
+  author       = {Paradis, Anouk and Bichsel, Benjamin and Steffen, Samuel and Vechev, Martin},
+  year         = 2021,
+  booktitle    = {Proceedings of the 42nd ACM SIGPLAN International Conference on Programming Language Design and Implementation},
+  location     = {Virtual, Canada},
+  publisher    = {Association for Computing Machinery},
+  address      = {New York, NY, USA},
+  series       = {PLDI 2021},
+  pages        = {222--236},
+  doi          = {10.1145/3453483.3454040},
+  isbn         = 9781450383912,
+  url          = {https://doi.org/10.1145/3453483.3454040},
+  abstract     = {A key challenge when writing quantum programs is the need for uncomputation: temporary values produced during the computation must be reset to zero before they can be safely discarded. Unfortunately, most existing quantum languages require tedious manual uncomputation, often leading to inefficient and error-prone programs. We present Unqomp, the first procedure to automatically synthesize uncomputation in a given quantum circuit. Unqomp can be readily integrated into popular quantum languages, allowing the programmer to allocate and use temporary values analogously to classical computation, knowing they will be uncomputed by Unqomp. Our evaluation shows that programs leveraging Unqomp are not only shorter (-19\% on average), but also generate more efficient circuits (-71\% gates and -19\% qubits on average).},
+  numpages     = 15,
+  keywords     = {Uncomputation, Synthesis, Quantum Circuits}
 }
 
 @inproceedings{Wright_2024_Quff,
-    author = {Wright, Christopher John and Luj\'{a}n, Mikel and Petoumenos, Pavlos and Goodacre, John},
-    title = {Quff: A Dynamically Typed Hybrid Quantum-Classical Programming Language},
-    year = {2024},
-    isbn = {9798400711183},
-    publisher = {Association for Computing Machinery},
-    address = {New York, NY, USA},
-    url = {https://doi.org/10.1145/3679007.3685063},
-    doi = {10.1145/3679007.3685063},
-    abstract = {Current strategies for quantum software development still exhibit complexity on top of the already-intricate nature of quantum mechanics. Quantum programming languages are either restricted to low-level, gate-based operations appended to classical objects for circuit generation, or require modelling of quantum state transformations in Hilbert space through algebraic representation.     This paper presents the Quff language which is a high-level, dynamically typed quantum-classical programming language. The Quff compiler and runtime system facilitates quantum software development with high-level expression abstracted across the quantum-classical paradigms. Quff is constructed on top of the Truffle framework which aids the implementation and efficiency of the stack, while reusing the JVM infrastructure. The presented comparisons display that Quff lends itself as an effective, easy-to-use solution for the development of executable quantum programs with automatic circuit generation and efficient computation.},
-    booktitle = {Proceedings of the 21st ACM SIGPLAN International Conference on Managed Programming Languages and Runtimes},
-    pages = {65--81},
-    numpages = {17},
-    keywords = {Compilation, Dynamically-typed Programming, GraalVM, Intermediate Representation, Java on Truffle, Quantum Computing, Quantum Programming, Runtime Systems},
-    location = {Vienna, Austria},
-    series = {MPLR 2024}
+  title        = {Quff: A Dynamically Typed Hybrid Quantum-Classical Programming Language},
+  author       = {Wright, Christopher John and Luj\'{a}n, Mikel and Petoumenos, Pavlos and Goodacre, John},
+  year         = 2024,
+  booktitle    = {Proceedings of the 21st ACM SIGPLAN International Conference on Managed Programming Languages and Runtimes},
+  location     = {Vienna, Austria},
+  publisher    = {Association for Computing Machinery},
+  address      = {New York, NY, USA},
+  series       = {MPLR 2024},
+  pages        = {65--81},
+  doi          = {10.1145/3679007.3685063},
+  isbn         = 9798400711183,
+  url          = {https://doi.org/10.1145/3679007.3685063},
+  abstract     = {Current strategies for quantum software development still exhibit complexity on top of the already-intricate nature of quantum mechanics. Quantum programming languages are either restricted to low-level, gate-based operations appended to classical objects for circuit generation, or require modelling of quantum state transformations in Hilbert space through algebraic representation.     This paper presents the Quff language which is a high-level, dynamically typed quantum-classical programming language. The Quff compiler and runtime system facilitates quantum software development with high-level expression abstracted across the quantum-classical paradigms. Quff is constructed on top of the Truffle framework which aids the implementation and efficiency of the stack, while reusing the JVM infrastructure. The presented comparisons display that Quff lends itself as an effective, easy-to-use solution for the development of executable quantum programs with automatic circuit generation and efficient computation.},
+  numpages     = 17,
+  keywords     = {Compilation, Dynamically-typed Programming, GraalVM, Intermediate Representation, Java on Truffle, Quantum Computing, Quantum Programming, Runtime Systems}
 }
 
-
-@article{gay_2006_survey, 
-    title={Quantum programming languages: survey and bibliography}, 
-    volume={16}, DOI={10.1017/S0960129506005378}, 
-    number={4}, 
-    journal={Mathematical Structures in Computer Science}, 
-    author={Gay, Simon J.}, 
-    year={2006}, 
-    pages={581--600}
+@article{Gay_2006_Survey,
+  title        = {Quantum programming languages: survey and bibliography},
+  author       = {Gay, Simon J.},
+  year         = 2006,
+  journal      = {Mathematical Structures in Computer Science},
+  volume       = 16,
+  number       = 4,
+  pages        = {581--600},
+  doi          = {10.1017/S0960129506005378}
 }
 
-@book{Nielsen_Chuang_2010_Bible, 
-    place={Cambridge}, 
-    title={Quantum Computation and Quantum Information: 10th Anniversary Edition}, 
-    publisher={Cambridge University Press}, 
-    author={Nielsen, Michael A. and Chuang, Isaac L.}, 
-    year={2010}
+@book{Nielsen_Chuang_2010_Bible,
+  title        = {Quantum Computation and Quantum Information: 10th Anniversary Edition},
+  author       = {Nielsen, Michael A. and Chuang, Isaac L.},
+  year         = 2010,
+  publisher    = {Cambridge University Press},
+  place        = {Cambridge}
+}
+
+@book{Coecke_2017_Dodo,
+  title        = {Picturing Quantum Processes: A First Course in Quantum Theory and Diagrammatic Reasoning},
+  author       = {Coecke, Bob and Kissinger, Aleks},
+  year         = 2017,
+  publisher    = {Cambridge University Press},
+  place        = {Cambridge}
 }
 
 @article{Abhari_2012_Scaffold,
-  title={Scaffold: Quantum programming language},
-  author={Abhari, Ali Javadi and Faruque, Arvin and Dousti, Mohammad Javad and Svec, Lukas and Catu, Oana and Chakrabati, Amlan and Chiang, Chen-Fu and Vanderwilt, Seth and Black, John and Chong, Fred and others},
-  journal={Princeton Univ NJ Dept of Computer Science},
-  year={2012},
-  url={https://www.cs.princeton.edu/techreports/2012/934.pdf}
+  title        = {Scaffold: Quantum programming language},
+  author       = {Abhari, Ali Javadi and Faruque, Arvin and Dousti, Mohammad Javad and Svec, Lukas and Catu, Oana and Chakrabati, Amlan and Chiang, Chen-Fu and Vanderwilt, Seth and Black, John and Chong, Fred and others},
+  year         = 2012,
+  journal      = {Princeton Univ NJ Dept of Computer Science},
+  url          = {https://www.cs.princeton.edu/techreports/2012/934.pdf}
 }
 
 @article{Smith_2016_Quil,
-  author       = {Robert S. Smith and
-                  Michael J. Curtis and
-                  William J. Zeng},
   title        = {A Practical Quantum Instruction Set Architecture},
+  author       = {Robert S. Smith and Michael J. Curtis and William J. Zeng},
+  year         = 2016,
   journal      = {CoRR},
   volume       = {abs/1608.03355},
-  year         = {2016},
   url          = {http://arxiv.org/abs/1608.03355},
-  eprinttype    = {arXiv},
+  eprinttype   = {arXiv},
   eprint       = {1608.03355},
   timestamp    = {Mon, 13 Aug 2018 16:49:00 +0200},
   biburl       = {https://dblp.org/rec/journals/corr/SmithCZ16.bib},
@@ -169,107 +259,707 @@ series = {PLDI 2021}
 }
 
 @article{Cross_2017_OpenQASM,
-      title={Open Quantum Assembly Language}, 
-      author={Andrew W. Cross and Lev S. Bishop and John A. Smolin and Jay M. Gambetta},
-      year={2017},
-      eprint={1707.03429},
-      archivePrefix={arXiv},
-      primaryClass={quant-ph},
-      url={https://arxiv.org/abs/1707.03429}, 
+  title        = {Open Quantum Assembly Language},
+  author       = {Andrew W. Cross and Lev S. Bishop and John A. Smolin and Jay M. Gambetta},
+  year         = 2017,
+  url          = {https://arxiv.org/abs/1707.03429},
+  eprint       = {1707.03429},
+  archiveprefix = {arXiv},
+  primaryclass = {quant-ph}
 }
 
 @article{Cross_2022_OpenQASM3,
-	author = {Cross, Andrew and Javadi-Abhari, Ali and Alexander, Thomas and De Beaudrap, Niel and Bishop, Lev S. and Heidel, Steven and Ryan, Colm A. and Sivarajah, Prasahnt and Smolin, John and Gambetta, Jay M. and Johnson, Blake R.},
-	title = {OpenQASM 3: A Broader and Deeper Quantum Assembly Language},
-	year = {2022},
-	issue_date = {September 2022},
-	publisher = {Association for Computing Machinery},
-	address = {New York, NY, USA},
-	volume = {3},
-	number = {3},
-	url = {https://doi.org/10.1145/3505636},
-	doi = {10.1145/3505636},
-	abstract = {Quantum assembly languages are machine-independent languages that traditionally describe quantum computation in the circuit model. Open quantum assembly language (OpenQASM 2) was proposed as an imperative programming language for quantum circuits based on earlier QASM dialects. In principle, any quantum computation could be described using OpenQASM 2, but there is a need to describe a broader set of circuits beyond the language of qubits and gates. By examining interactive use cases, we recognize two different timescales of quantum-classical interactions: real-time classical computations that must be performed within the coherence times of the qubits, and near-time computations with less stringent timing. Since the near-time domain is adequately described by existing programming frameworks, we choose in OpenQASM 3 to focus on the real-time domain, which must be more tightly coupled to the execution of quantum operations. We add support for arbitrary control flow as well as calling external classical functions. In addition, we recognize the need to describe circuits at multiple levels of specificity, and therefore we extend the language to include timing, pulse control, and gate modifiers. These new language features create a multi-level intermediate representation for circuit development and optimization, as well as control sequence implementation for calibration, characterization, and error mitigation.},
-	journal = {ACM Transactions on Quantum Computing},
-	month = sep,
-	articleno = {12},
-	numpages = {50},
-	keywords = {circuit scheduling, dynamic circuits, quantum circuits, quantum programming languages, Quantum computing}
+  title        = {OpenQASM 3: A Broader and Deeper Quantum Assembly Language},
+  author       = {Cross, Andrew and Javadi-Abhari, Ali and Alexander, Thomas and De Beaudrap, Niel and Bishop, Lev S. and Heidel, Steven and Ryan, Colm A. and Sivarajah, Prasahnt and Smolin, John and Gambetta, Jay M. and Johnson, Blake R.},
+  year         = 2022,
+  month        = sep,
+  journal      = {ACM Transactions on Quantum Computing},
+  publisher    = {Association for Computing Machinery},
+  address      = {New York, NY, USA},
+  volume       = 3,
+  number       = 3,
+  doi          = {10.1145/3505636},
+  url          = {https://doi.org/10.1145/3505636},
+  issue_date   = {September 2022},
+  abstract     = {Quantum assembly languages are machine-independent languages that traditionally describe quantum computation in the circuit model. Open quantum assembly language (OpenQASM 2) was proposed as an imperative programming language for quantum circuits based on earlier QASM dialects. In principle, any quantum computation could be described using OpenQASM 2, but there is a need to describe a broader set of circuits beyond the language of qubits and gates. By examining interactive use cases, we recognize two different timescales of quantum-classical interactions: real-time classical computations that must be performed within the coherence times of the qubits, and near-time computations with less stringent timing. Since the near-time domain is adequately described by existing programming frameworks, we choose in OpenQASM 3 to focus on the real-time domain, which must be more tightly coupled to the execution of quantum operations. We add support for arbitrary control flow as well as calling external classical functions. In addition, we recognize the need to describe circuits at multiple levels of specificity, and therefore we extend the language to include timing, pulse control, and gate modifiers. These new language features create a multi-level intermediate representation for circuit development and optimization, as well as control sequence implementation for calibration, characterization, and error mitigation.},
+  articleno    = 12,
+  numpages     = 50,
+  keywords     = {circuit scheduling, dynamic circuits, quantum circuits, quantum programming languages, Quantum computing}
 }
 
 @inproceedings{Wesley_2024_LinguaQuanta,
-  author       = {Scott Wesley},
-  editor       = {Torben {\AE}gidius Mogensen and
-                  Lukasz Mikulski},
   title        = {LinguaQuanta: Towards a Quantum Transpiler Between OpenQASM and Quipper},
-  booktitle    = {Reversible Computation - 16th International Conference, {RC} 2024,
-                  Toru{\'{n}}, Poland, July 4-5, 2024, Proceedings},
-  series       = {Lecture Notes in Computer Science},
-  volume       = {14680},
-  pages        = {142--160},
+  author       = {Scott Wesley},
+  year         = 2024,
+  booktitle    = {Reversible Computation - 16th International Conference, {RC} 2024, Toru{\'{n}}, Poland, July 4-5, 2024, Proceedings},
   publisher    = {Springer},
-  year         = {2024},
-  url          = {https://doi.org/10.1007/978-3-031-62076-8\_10},
+  series       = {Lecture Notes in Computer Science},
+  volume       = 14680,
+  pages        = {142--160},
   doi          = {10.1007/978-3-031-62076-8\_10},
+  url          = {https://doi.org/10.1007/978-3-031-62076-8\_10},
+  editor       = {Torben {\AE}gidius Mogensen and Lukasz Mikulski},
   timestamp    = {Tue, 04 Jun 2024 15:58:49 +0200},
   biburl       = {https://dblp.org/rec/conf/rc/Wesley24.bib},
   bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Tofte_1997_Regions,
-title = {Region-Based Memory Management},
-journal = {Information and Computation},
-volume = {132},
-number = {2},
-pages = {109-176},
-year = {1997},
-issn = {0890-5401},
-doi = {https://doi.org/10.1006/inco.1996.2613},
-url = {https://www.sciencedirect.com/science/article/pii/S0890540196926139},
-author = {Mads Tofte and Jean-Pierre Talpin},
+  title        = {Region-Based Memory Management},
+  author       = {Mads Tofte and Jean-Pierre Talpin},
+  year         = 1997,
+  journal      = {Information and Computation},
+  volume       = 132,
+  number       = 2,
+  pages        = {109--176},
+  doi          = {https://doi.org/10.1006/inco.1996.2613},
+  issn         = {0890-5401},
+  url          = {https://www.sciencedirect.com/science/article/pii/S0890540196926139}
 }
 
-@Article{Wootters_1982_NoCloning,
-author={Wootters, W. K.
-and Zurek, W. H.},
-title={A single quantum cannot be cloned},
-journal={Nature},
-year={1982},
-month={Oct},
-day={01},
-volume={299},
-number={5886},
-pages={802-803},
-abstract={If a photon of definite polarization encounters an excited atom, there is typically some nonvanishing probability that the atom will emit a second photon by stimulated emission. Such a photon is guaranteed to have the same polarization as the original photon. But is it possible by this or any other process to amplify a quantum state, that is, to produce several copies of a quantum system (the polarized photon in the present case) each having the same state as the original? If it were, the amplifying process could be used to ascertain the exact state of a quantum system: in the case of a photon, one could determine its polarization by first producing a beam of identically polarized copies and then measuring the Stokes parameters1. We show here that the linearity of quantum mechanics forbids such replication and that this conclusion holds for all quantum systems.},
-issn={1476-4687},
-doi={10.1038/299802a0},
-url={https://doi.org/10.1038/299802a0}
+@article{Wootters_1982_NoCloning,
+  title        = {A single quantum cannot be cloned},
+  author       = {Wootters, W. K. and Zurek, W. H.},
+  year         = 1982,
+  month        = {Oct},
+  day          = {01},
+  journal      = {Nature},
+  volume       = 299,
+  number       = 5886,
+  pages        = {802--803},
+  doi          = {10.1038/299802a0},
+  issn         = {1476-4687},
+  url          = {https://doi.org/10.1038/299802a0},
 }
-
 
 @inproceedings{Sabry_2003_ModellingQantumHaskell,
-author = {Sabry, Amr},
-title = {Modeling quantum computing in Haskell},
-year = {2003},
-isbn = {1581137583},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/871895.871900},
-doi = {10.1145/871895.871900},
-abstract = {The paper develops a model of quantum computing from the perspective of functional programming. The model explains the fundamental ideas of quantum computing at a level of abstraction that is familiar to functional programmers. The model also illustrates some of the inherent difficulties in interpreting quantum mechanics and highlights the differences between quantum computing and traditional (functional or otherwise) computing models.},
-booktitle = {Proceedings of the 2003 ACM SIGPLAN Workshop on Haskell},
-pages = {39–49},
-numpages = {11},
-keywords = {virtual value, qubit, quantum computing, entanglement, adaptor, Haskell},
-location = {Uppsala, Sweden},
-series = {Haskell '03}
+  title        = {Modeling quantum computing in Haskell},
+  author       = {Sabry, Amr},
+  year         = 2003,
+  booktitle    = {Proceedings of the 2003 ACM SIGPLAN Workshop on Haskell},
+  location     = {Uppsala, Sweden},
+  publisher    = {Association for Computing Machinery},
+  address      = {New York, NY, USA},
+  series       = {Haskell '03},
+  pages        = {39–49},
+  doi          = {10.1145/871895.871900},
+  isbn         = 1581137583,
+  url          = {https://doi.org/10.1145/871895.871900},
+  numpages     = 11,
+  keywords     = {virtual value, qubit, quantum computing, entanglement, adaptor, Haskell}
 }
 
-@techreport{Cytron_1991_SSA,
-author = {Cytron, Ron and Ferrante, Jeanne and Rosen, Barry K. and Wegman, Mark N. and Zadeck, F. K},
-title = {Efficiently Computing Static Single Assignment Form and the Control Dependence Graph},
-year = {1991},
-publisher = {Brown University},
-address = {USA},
-abstract = {In optimizing compilers, data structure choices directly influence the power and efficiency of practical program optimization. A poor choice of data structure can inhibit optimization or slow compilation to the point that advanced optimization features become undesirable. Recently, static single assignment form and the control dependence graph have been proposed to represent data flow and control flow properties of programs. Each of these previously unrelated techniques lends efficiency and power to a useful class of program optimizations. Although both of these structures are attractive, the difficulty of their construction and their potential size have discouraged their use. We present new algorithms that efficiently compute these data structures for arbitrary control flow graphs. The algorithms use {em dominance frontiers}, a new concept that may have other applications. We also give analytical and experimental evidence that all of these data structures are usually linear in the size of the original program. This paper thus presents strong evidence that these structures can be of practical use in optimization.}
+@article{Cytron_1991_SSA,
+  author = {Cytron, Ron and Ferrante, Jeanne and Rosen, Barry K. and Wegman, Mark N. and Zadeck, F. Kenneth},
+  title = {Efficiently computing static single assignment form and the control dependence graph},
+  year = {1991},
+  issue_date = {Oct. 1991},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  volume = {13},
+  number = {4},
+  issn = {0164-0925},
+  url = {https://doi.org/10.1145/115372.115320},
+  doi = {10.1145/115372.115320},
+  journal = {ACM Trans. Program. Lang. Syst.},
+  month = oct,
+  pages = {451--490},
+  numpages = {40},
+  keywords = {optimizing compilers, dominator, def-use chain, control flow graph, control dependence}
 }
+
+-- New:
+@article{Heim_2020_QPL,
+  title        = {Quantum programming languages},
+  author       = {Heim, Bettina and Soeken, Mathias and Marshall, Sarah and Granade, Chris and Roetteler, Martin and Geller, Alan and Troyer, Matthias and Svore, Krysta},
+  year         = 2020,
+  month        = {Dec},
+  day          = {01},
+  journal      = {Nature Reviews Physics},
+  volume       = 2,
+  number       = 12,
+  pages        = {709--722},
+  doi          = {10.1038/s42254-020-00245-7},
+  issn         = {2522-5820},
+  url          = {https://doi.org/10.1038/s42254-020-00245-7},
+  abstract     = {Quantum programming languages are essential to translate ideas into instructions that can be executed by a quantum computer. Not only are they crucial to the programming of quantum computers at scale but also they can facilitate the discovery and development of quantum algorithms even before hardware exists that is capable of executing them. Quantum programming languages are used for controlling existing physical devices, for estimating the execution costs of quantum algorithms on future devices, for teaching quantum computing concepts, or for verifying quantum algorithms and their implementations. They are used by newcomers and seasoned practitioners, researchers and developers working on the next ground-breaking discovery or applying known concepts to real-world problems. This variety in purpose and target audiences is reflected in the design and ecosystem of the existing quantum programming languages, depending on which factors a language prioritizes. In this Review, we highlight important aspects of quantum programming and how it differs from conventional programming. We overview a selection of several state-of-the-art quantum programming languages, highlight their salient features, and provide code samples for each of the languages and Docker files to facilitate installation of the software packages.}
+}
+
+@article{Cardama_2025_QIRReview,
+  title        = {Review of intermediate representations for quantum computing},
+  author       = {Cardama, F. Javier and V{\'a}zquez-P{\'e}rez, Jorge and Pi{\~{n}}eiro, C{\'e}sar and Pichel, Juan C. and Pena, Tom{\'a}s F. and G{\'o}mez, Andr{\'e}s},
+  year         = 2025,
+  month        = {Jan},
+  day          = 21,
+  journal      = {The Journal of Supercomputing},
+  volume       = 81,
+  number       = 2,
+  pages        = 418,
+  doi          = {10.1007/s11227-024-06892-2},
+  issn         = {1573-0484},
+  url          = {https://doi.org/10.1007/s11227-024-06892-2},
+  abstract     = {Intermediate representations (IRs) are fundamental to classical and quantum computing, bridging high-level quantum programming languages and the hardware-specific instructions required for execution. This paper reviews the development of quantum IRs, focusing on their evolution and the need for abstraction layers that facilitate portability and optimization. Monolithic quantum IRs, such as QIR (Lubinski et al. in Front Phys 10:940293, 2022. https://doi.org/10.3389/fphy.2022.940293), QSSA (Peduri et al. in Proceedings of the 31st ACM SIGPLAN international conference on compiler construction. CC 2022. Association for Computing Machinery, New York, 2022), or Q-MLIR (McCaskey and Nguyen in Proceedings-2021 IEEE International Conference on Quantum Computing and Engineering, QCE, 2021), their effectiveness in handling abstractions, and their hybrid support between quantum-classical operations are evaluated. However, a key limitation is their inability to address qubit locality, an essential feature for distributed quantum computing (DQC). To overcome this, InQuIR (Nishio and Wakizaka in InQuIR: Intermediate Representation for Interconnected Quantum Computers, 2023. https://arxiv.org/abs/2302.00267) was introduced as an IR specifically designed for distributed systems, providing explicit control over qubit locality and inter-node communication. While effective in managing qubit distribution, InQuIR's dependence on manual manipulation of communication protocols increases complexity for developers. NetQIR (V{\'a}zquez-P{\'e}rez et al. in NetQIR: An Extension of QIR for Distributed Quantum Computing, 2024. https://arxiv.org/abs/2408.03712), an extension of QIR for DQC, emerges as a solution to achieve the abstraction of quantum communications protocols. This review emphasizes the need for further advancements in IRs for distributed quantum systems, which will play a crucial role in the scalability and usability of future quantum networks.}
+}
+
+@article{Lattner_2020_MLIR,
+  title        = {{MLIR:} {A} Compiler Infrastructure for the End of Moore's Law},
+  author       = {Chris Lattner and Jacques A. Pienaar and Mehdi Amini and Uday Bondhugula and River Riddle and Albert Cohen and Tatiana Shpeisman and Andy Davis and Nicolas Vasilache and Oleksandr Zinenko},
+  year         = 2020,
+  journal      = {CoRR},
+  volume       = {abs/2002.11054},
+  url          = {https://arxiv.org/abs/2002.11054},
+  eprinttype   = {arXiv},
+  eprint       = {2002.11054},
+  timestamp    = {Thu, 14 Oct 2021 09:16:09 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2002-11054.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{Grover_1996_Algorithm,
+  title        = {A fast quantum mechanical algorithm for database search},
+  author       = {Grover, Lov K.},
+  year         = 1996,
+  booktitle    = {Proceedings of the Twenty-Eighth Annual ACM Symposium on Theory of Computing},
+  location     = {Philadelphia, Pennsylvania, USA},
+  publisher    = {Association for Computing Machinery},
+  address      = {New York, NY, USA},
+  series       = {STOC '96},
+  pages        = {212--219},
+  doi          = {10.1145/237814.237866},
+  isbn         = {0897917855},
+  url          = {https://doi.org/10.1145/237814.237866},
+  numpages     = 8
+}
+
+@inproceedings{Soeken_2022_aog,
+  title        = {Automatic oracle generation in microsoft's quantum development kit using QIR and LLVM passes},
+  author       = {Soeken, Mathias and Mykhailova, Mariia},
+  year         = 2022,
+  booktitle    = {Proceedings of the 59th ACM/IEEE Design Automation Conference},
+  location     = {San Francisco, California},
+  publisher    = {Association for Computing Machinery},
+  address      = {New York, NY, USA},
+  series       = {DAC '22},
+  pages        = {1363--1366},
+  doi          = {10.1145/3489517.3530626},
+  isbn         = 9781450391429,
+  url          = {https://doi.org/10.1145/3489517.3530626},
+  abstract     = {Automatic oracle generation techniques can find optimized quantum circuits for classical components in quantum algorithms. However, most implementations of oracle generation techniques require that the classical component is expressed in terms of a conventional logic representation such as logic networks, truth tables, or decision diagrams. We implemented LLVM passes that can automatically generate QIR functions representing classical Q# functions into QIR code implementing such functions quantumly. We are using state-of-the-art logic optimization and oracle generation techniques based on XOR-AND graphs for this purpose. This enables not only a more natural description of the quantum algorithm on a higher level of abstraction, but also enables technology-dependent or application-specific generation of the oracles.},
+  numpages     = 4
+}
+
+--- misc. website:
+@misc{unk_2025_quilt,
+  title        = {Quil-T},
+  howpublished = {\url{https://quil-lang.github.io/\#12Annex-T--Pulse-Level-Control}}
+}
+
+@article{Ittah_2022_QIRO,
+  title        = {QIRO: A Static Single Assignment-based Quantum Program Representation for Optimization},
+  author       = {Ittah, David and H\"{a}ner, Thomas and Kliuchnikov, Vadym and Hoefler, Torsten},
+  year         = 2022,
+  month        = jun,
+  journal      = {ACM Transactions on Quantum Computing},
+  publisher    = {Association for Computing Machinery},
+  address      = {New York, NY, USA},
+  volume       = 3,
+  number       = 3,
+  doi          = {10.1145/3491247},
+  url          = {https://doi.org/10.1145/3491247},
+  issue_date   = {September 2022},
+  abstract     = {We propose an IR for quantum computing that directly exposes quantum and classical data dependencies for the purpose of optimization. The Quantum Intermediate Representation for Optimization(QIRO) consists of two dialects, one input dialect and one that is specifically tailored to enable quantum-classical co-optimization. While the first employs a perhaps more intuitive memory-semantics (quantum operations act on qubits via side-effects), the latter uses value-semantics (operations consume and produce states) to integrate quantum dataflow in the IR’s Static Single Assignment (SSA) graph. Crucially, this allows for a host of optimizations that leverage dataflow analysis. We discuss how to map existing quantum programming languages to the input dialect and how to lower the resulting IR to the optimization dialect. We present a prototype implementation based on MLIR that includes several quantum-specific optimization passes. Our benchmarks show that significant improvements in resource requirements are possible even through static optimization. In contrast to circuit optimization at run time, this is achieved while incurring only a small constant overhead in compilation time, making this a compelling approach for quantum program optimization at application scale.},
+  articleno    = 14,
+  numpages     = 32,
+  keywords     = {MLIR, intermediate representation, dataflow optimization, Quantum compilation}
+}
+
+@inproceedings{Svore_2018_Q_sharp,
+  title        = {Q\#: Enabling Scalable Quantum Computing and Development with a High-level DSL},
+  author       = {Svore, Krysta and Geller, Alan and Troyer, Matthias and Azariah, John and Granade, Christopher and Heim, Bettina and Kliuchnikov, Vadym and Mykhailova, Mariia and Paz, Andres and Roetteler, Martin},
+  year         = 2018,
+  booktitle    = {Proceedings of the Real World Domain Specific Languages Workshop 2018},
+  location     = {Vienna, Austria},
+  publisher    = {Association for Computing Machinery},
+  address      = {New York, NY, USA},
+  series       = {RWDSL2018},
+  doi          = {10.1145/3183895.3183901},
+  isbn         = 9781450363556,
+  url          = {https://doi.org/10.1145/3183895.3183901},
+  abstract     = {Quantum computing exploits quantum phenomena such as superposition and entanglement to realize a form of parallelism that is not available to traditional computing. It offers the potential of significant computational speed-ups in quantum chemistry, materials science, cryptography, and machine learning.The dominant approach to programming quantum computers is to provide an existing high-level language with libraries that allow for the expression of quantum programs. This approach can permit computations that are meaningless in a quantum context; prohibits succint expression of interaction between classical and quantum logic; and does not provide important constructs that are required for quantum programming.We present Q#, a quantum-focused domain-specific language explicitly designed to correctly, clearly and completely express quantum algorithms. Q# provides a type system; a tightly constrained environment to safely interleave classical and quantum computations; specialized syntax; symbolic code manipulation to automatically generate correct transformations of quantum operations; and powerful functional constructs which aid composition.},
+  articleno    = 7,
+  numpages     = 10,
+  keywords     = {domain specific language, functional programming, quantum computing}
+}
+
+@misc{McCaskey_2019_XACC,
+  title        = {XACC: A System-Level Software Infrastructure for Heterogeneous Quantum-Classical Computing},
+  author       = {Alexander J. McCaskey and Dmitry I. Lyakh and Eugene F. Dumitrescu and Sarah S. Powers and Travis S. Humble},
+  year         = 2019,
+  url          = {https://arxiv.org/abs/1911.02452},
+  eprint       = {1911.02452},
+  archiveprefix = {arXiv},
+  primaryclass = {quant-ph}
+}
+
+// Update this to 
+@inproceedings{Paykin_2017_QWIRE,
+  author = {Paykin, Jennifer and Rand, Robert and Zdancewic, Steve},
+  title = {QWIRE: a core language for quantum circuits},
+  year = {2017},
+  isbn = {9781450346603},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3009837.3009894},
+  doi = {10.1145/3009837.3009894},
+  booktitle = {Proceedings of the 44th ACM SIGPLAN Symposium on Principles of Programming Languages},
+  pages = {846--858},
+  numpages = {13},
+  keywords = {denotational semantics, linear types, quantum circuits, quantum programming languages},
+  location = {Paris, France},
+  series = {POPL '17}
+}
+
+
+
+@article{Rand_2019_ReQWIRE,
+  title        = {ReQWIRE: Reasoning about Reversible Quantum Circuits},
+  author       = {Rand, Robert and Paykin, Jennifer and Lee, Dong-Ho and Zdancewic, Steve},
+  year         = 2019,
+  month        = jan,
+  journal      = {Electronic Proceedings in Theoretical Computer Science},
+  publisher    = {Open Publishing Association},
+  volume       = 287,
+  pages        = {299--312},
+  doi          = {10.4204/eptcs.287.17},
+  issn         = {2075-2180},
+  url          = {http://dx.doi.org/10.4204/EPTCS.287.17}
+}
+
+@misc{Wecker_2014_liquid,
+  title        = {LIQU$i\ket{}$: A Software Design Architecture and Domain-Specific Language for Quantum Computing},
+  author       = {Dave Wecker and Krysta M. Svore},
+  year         = 2014,
+  url          = {https://arxiv.org/abs/1402.4467},
+  eprint       = {1402.4467},
+  archiveprefix = {arXiv},
+  primaryclass = {quant-ph}
+}
+
+@misc{Hirata_2024_Qurts,
+  title        = {Qurts: Automatic Quantum Uncomputation by Affine Types with Lifetime},
+  author       = {Kengo Hirata and Chris Heunen},
+  year         = 2024,
+  url          = {https://arxiv.org/abs/2411.10835},
+  eprint       = {2411.10835},
+  archiveprefix = {arXiv},
+  primaryclass = {cs.PL}
+}
+
+@article{Steiger_2018_ProjectQ,
+  title        = {ProjectQ: an open source software framework for quantum computing},
+  author       = {Steiger, Damian S. and Häner, Thomas and Troyer, Matthias},
+  year         = 2018,
+  month        = jan,
+  journal      = {Quantum},
+  publisher    = {Verein zur Forderung des Open Access Publizierens in den Quantenwissenschaften},
+  volume       = 2,
+  pages        = 49,
+  doi          = {10.22331/q-2018-01-31-49},
+  issn         = {2521-327X},
+  url          = {http://dx.doi.org/10.22331/q-2018-01-31-49}
+}
+
+@article{Voichick_2023_Qunity,
+  title        = {Qunity: A Unified Language for Quantum and Classical Computing},
+  author       = {Voichick, Finn and Li, Liyi and Rand, Robert and Hicks, Michael},
+  year         = 2023,
+  month        = jan,
+  journal      = {Proc. ACM Program. Lang.},
+  publisher    = {Association for Computing Machinery},
+  address      = {New York, NY, USA},
+  volume       = 7,
+  number       = {POPL},
+  doi          = {10.1145/3571225},
+  url          = {https://doi.org/10.1145/3571225},
+  issue_date   = {January 2023},
+  abstract     = {We introduce Qunity, a new quantum programming language designed to treat quantum computing as a natural generalization of classical computing. Qunity presents a unified syntax where familiar programming constructs can have both quantum and classical effects. For example, one can use sum types to implement the direct sum of linear operators, exception-handling syntax to implement projective measurements, and aliasing to induce entanglement. Further, Qunity takes advantage of the overlooked BQP subroutine theorem, allowing one to construct reversible subroutines from irreversible quantum algorithms through the uncomputation of "garbage" outputs. Unlike existing languages that enable quantum aspects with separate add-ons (like a classical language with quantum gates bolted on), Qunity provides a unified syntax and a novel denotational semantics that guarantees that programs are quantum mechanically valid. We present Qunity's syntax, type system, and denotational semantics, showing how it can cleanly express several quantum algorithms. We also detail how Qunity can be compiled into a low-level qubit circuit language like OpenQASM, proving the realizability of our design.},
+  articleno    = 32,
+  numpages     = 31,
+  keywords     = {Kraus operators, algebraic data types, quantum subroutines, reversible computing}
+}
+
+@inproceedings{Adams_2025_ASDF,
+  title        = {ASDF: A Compiler for Qwerty, a Basis-Oriented Quantum Programming Language},
+  author       = {Adams, Austin J. and Khan, Sharjeel and Bhamra, Arjun S. and Abusaada, Ryan R. and Cabrera, Anthony M. and Hoechst, Cameron C. and Humble, Travis S. and Young, Jeffrey S. and Conte, Thomas M.},
+  year         = 2025,
+  booktitle    = {Proceedings of the 23rd ACM/IEEE International Symposium on Code Generation and Optimization},
+  location     = {Las Vegas, NV, USA},
+  publisher    = {Association for Computing Machinery},
+  address      = {New York, NY, USA},
+  series       = {CGO '25},
+  pages        = {444--458},
+  doi          = {10.1145/3696443.3708966},
+  isbn         = 9798400712753,
+  url          = {https://doi.org/10.1145/3696443.3708966},
+  abstract     = {Qwerty is a high-level quantum programming language built on bases and functions rather than circuits. This new paradigm introduces new challenges in compilation, namely synthesizing circuits from basis translations and automatically specializing adjoint or predicated forms of functions. This paper presents ASDF, an open-source compiler for Qwerty that answers these challenges in compiling basis-oriented languages. Enabled with a novel high-level quantum IR implemented in the MLIR framework, our compiler produces OpenQASM 3 or QIR for either simulation or execution on hardware. Our compiler is evaluated by comparing the fault-tolerant resource requirements of generated circuits with other compilers, finding that ASDF produces circuits with comparable cost to prior circuit-oriented compilers.},
+  numpages     = 15,
+  keywords     = {Quantum compilation, domain-specific languages}
+}
+
+@misc{Knill_1996_Pseudocode,
+  title        = {Conventions for Quantum Pseudocode},
+  author       = {E. Knill},
+  year         = 1996,
+  url          = {https://arxiv.org/abs/2211.02559},
+  eprint       = {2211.02559},
+  archiveprefix = {arXiv},
+  primaryclass = {quant-ph}
+}
+
+@article{Oskin_2002_Architecture,
+  title        = {A practical architecture for reliable quantum computers},
+  author       = {Oskin, M. and Chong, F.T. and Chuang, I.L.},
+  year         = 2002,
+  journal      = {Computer},
+  volume       = 35,
+  number       = 1,
+  pages        = {79--87},
+  doi          = {10.1109/2.976922},
+  keywords     = {Quantum computing;Computer architecture;Quantum mechanics;Error correction codes;Reliability engineering;Systems engineering and theory;Laboratories;Engineering drawings;Scalability;Circuit faults}
+}
+
+@article{Preskill_2018_NISQ,
+  title        = {Quantum {C}omputing in the {NISQ} era and beyond},
+  author       = {Preskill, John},
+  year         = 2018,
+  month        = aug,
+  journal      = {Quantum},
+  publisher    = {{Verein zur F{\"{o}}rderung des Open Access Publizierens in den Quantenwissenschaften}},
+  volume       = 2,
+  pages        = 79,
+  doi          = {10.22331/q-2018-08-06-79},
+  issn         = {2521-327X},
+  url          = {https://doi.org/10.22331/q-2018-08-06-79}
+}
+
+@article{Selinger_2004_towardsQPL,
+  title        = {Towards a quantum programming language},
+  author       = {Selinger, Peter},
+  year         = 2004,
+  month        = aug,
+  journal      = {Mathematical. Structures in Comp. Sci.},
+  publisher    = {Cambridge University Press},
+  address      = {USA},
+  volume       = 14,
+  number       = 4,
+  pages        = {527–586},
+  doi          = {10.1017/S0960129504004256},
+  issn         = {0960-1295},
+  url          = {https://doi.org/10.1017/S0960129504004256},
+  issue_date   = {August 2004},
+  abstract     = {We propose the design of a programming language for quantum computing. Traditionally, quantum algorithms are frequently expressed at the hardware level, for instance in terms of the quantum circuit model or quantum Turing machines. These approaches do not encourage structured programming or abstractions such as data types. In this paper, we describe the syntax and semantics of a simple quantum programming language with high-level features such as loops, recursive procedures, and structured data types. The language is functional in nature, statically typed, free of run-time errors, and has an interesting denotational semantics in terms of complete partial orders of superoperators.},
+  numpages     = 60
+}
+
+@article{Perdrix_2006_CQTM,
+  title        = {Classically-controlled Quantum Computation},
+  author       = {Perdrix, Simon and Jorrand, Philippe},
+  year         = 2006,
+  month        = mar,
+  journal      = {Electron. Notes Theor. Comput. Sci.},
+  publisher    = {Elsevier Science Publishers B. V.},
+  address      = {NLD},
+  volume       = 135,
+  number       = 3,
+  pages        = {119--128},
+  doi          = {10.1016/j.entcs.2005.09.026},
+  issn         = {1571-0661},
+  url          = {https://doi.org/10.1016/j.entcs.2005.09.026},
+  issue_date   = {March, 2006},
+  abstract     = {It is reasonable to assume that quantum computations take place under the control of the classical world. For modelling this standard situation, we introduce a Classically-controlled Quantum Turing Machine (CQTM) which is a Turing machine with a quantum tape for acting on quantum data, and a classical transition function for a formalized classical control. In CQTM, unitary transformations and quantum measurements are allowed. We show that any classical Turing machine is simulated by a CQTM without loss of efficiency. Furthermore, we show that any k-tape CQTM is simulated by a 2-tape CQTM with a quadratic loss of efficiency. The gap between classical and quantum computations which was already pointed out in the framework of measurement-based quantum computation (see [S. Perdrix, Ph. Jorrand, Measurement-Based Quantum Turing Machines and their Universality, arXiv, quant-ph/0404146, 2004]) is confirmed in the general case of classically-controlled quantum computation. In order to appreciate the similarity between programming classical Turing machines and programming CQTM, some examples of CQTM will be given in the full version of the paper. Proofs of lemmas and theorems are omitted in this extended abstract.},
+  numpages     = 10,
+  keywords     = {Classically-Controlled Quantum Computation, Quantum Turing Machine}
+}
+
+@article{Girard_1987_Linear_Logic,
+  title        = {Linear logic},
+  author       = {Jean-Yves Girard},
+  year         = 1987,
+  journal      = {Theoretical Computer Science},
+  volume       = 50,
+  number       = 1,
+  pages        = {1--101},
+  doi          = {https://doi.org/10.1016/0304-3975(87)90045-4},
+  issn         = {0304-3975},
+  url          = {https://www.sciencedirect.com/science/article/pii/0304397587900454},
+  abstract     = {The familiar connective of negation is broken into two operations: linear negation which is the purely negative part of negation and the modality “of course” which has the meaning of a reaffirmation. Following this basic discovery, a completely new approach to the whole area between constructive logics and programmation is initiated.}
+}
+
+@inproceedings{Girard_1995_Linear_Logic,
+  title        = {Linear logic: its syntax and semantics},
+  author       = {Girard, Jean-Yves},
+  year         = 1995,
+  booktitle    = {Proceedings of the Workshop on Advances in Linear Logic},
+  publisher    = {Cambridge University Press},
+  address      = {USA},
+  pages        = {1--42},
+  isbn         = {0521559618},
+  numpages     = 42
+}
+
+@article{Wadler_1994_Linear_Types,
+  title        = {Linear Types Can Change the World!},
+  author       = {Wadler, Philip},
+  year         = 1993,
+  month        = 10
+}
+
+@inproceedings{Perdrix_2008_Entaglement_analysis,
+  title        = {Quantum Entanglement Analysis Based on Abstract Interpretation},
+  author       = {Perdrix, Simon},
+  year         = 2008,
+  booktitle    = {Proceedings of the 15th International Symposium on Static Analysis},
+  location     = {Valencia, Spain},
+  publisher    = {Springer-Verlag},
+  address      = {Berlin, Heidelberg},
+  series       = {SAS '08},
+  pages        = {270--282},
+  doi          = {10.1007/978-3-540-69166-2_18},
+  isbn         = 9783540691631,
+  url          = {https://doi.org/10.1007/978-3-540-69166-2_18},
+  abstract     = {Entanglement is a non local property of quantum states which has no classical counterpart and plays a decisive role in quantum information theory. Several protocols, like the teleportation, are based on quantum entangled states. Moreover, any quantum algorithm which does not create entanglement can be efficiently simulated on a classical computer. The exact role of the entanglement is nevertheless not well understood. Since an exact analysis of entanglement evolution induces an exponential slowdown, we consider approximative analysis based on the framework of abstract interpretation. In this paper, a concrete quantum semantics based on superoperators is associated with a simple quantum programming language. The representation of entanglement, i.e. the design of the abstract domain is a key issue. A representation of entanglement as a partition of the memory is chosen. An abstract semantics is introduced, and the soundness of the approximation is proven.},
+  numpages     = 13
+}
+
+@article{Perdrix_2007_Entanglement_patterns,
+  title        = {Quantum Patterns and Types for Entanglement and Separability},
+  author       = {Simon Perdrix},
+  year         = 2007,
+  journal      = {Electronic Notes in Theoretical Computer Science},
+  volume       = 170,
+  pages        = {125--138},
+  doi          = {https://doi.org/10.1016/j.entcs.2006.12.015},
+  issn         = {1571-0661},
+  url          = {https://www.sciencedirect.com/science/article/pii/S157106610700059X},
+  note         = {Proceedings of the 3rd International Workshop on Quantum Programming Languages (QPL 2005)},
+  keywords     = {Quantum programming languages, quantum types, entanglement and separability},
+  abstract     = {As a first step toward a notion of quantum data structures, we introduce a typing system for reflecting entanglement and separability. This is presented in the context of classically controlled quantum computation where a classical program controls a sequence of quantum operations, i.e. unitary transformations and measurements acting on a quantum memory. Abstract models for such quantum computations are the Quantum Random Access Machine (QRAM [E. Knill, Conventions for Quantum Pseudocode, LANL report LAUR-96-2724, 1996]) and the Classically-Controlled Quantum Turing Machine (CQTM [S. Perdrix, Ph. Jorrand, Classically-Controlled Quantum Computation, arXiv:quant-ph/0407008, to appear in Mathematical Structures in Computer Science]). Several quantum programming languages follow this model [S. Bettelli, T. Calarco, L. Serafini, Toward an architecture for quantum programming, Eur. Phys. J. D 25 (2) (2003) 181--200, S.J. Gay, R. Nagarajan, Communicating quantum processes, Proceedings of the 32nd ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages, Jens Palsberg and Martin Abadi (Eds.), POPL 2005, January 12--14, 2005, pp. 145--157, M. Lalire, Ph. Jorrand, A process algebraic approach to concurrent and distributed quantum computation: operational semantics, Proceedings of the 2nd International Workshop on Quantum Programming Languages, 2004, pp. 109--126, J.W. Sanders, P. Zuliani, Quantum Programming, Mathematics of Program Construction, Springer LNCS 1837, 80--99, 2000, P. Selinger, Towards a Quantum Programming Language, Mathematical Structures in Computer Science 14 (4) (2004) 527--586]. Among them, the functional language defined by Valiron [B. Valiron, Quantum Typing, Proceedings of the 2nd International Workshop on Quantum Programming Languages, 2004, pp. 163--178] is the basis for the language developed in this paper. This is work in progress.}
+}
+
+@inbook{Prost_2009_Entanglement,
+  title        = {Reasoning about Entanglement and Separability in Quantum Higher-Order Functions},
+  author       = {Prost, Frédéric and Zerrari, Chaouki},
+  year         = 2009,
+  booktitle    = {Unconventional Computation},
+  publisher    = {Springer Berlin Heidelberg},
+  pages        = {219--235},
+  doi          = {10.1007/978-3-642-03745-0_25},
+  isbn         = 9783642037450,
+  issn         = {1611-3349},
+  url          = {http://dx.doi.org/10.1007/978-3-642-03745-0_25}
+}
+
+@inproceedings{Xia_2023_Entanglement_analysis,
+  title        = {Static Entanglement Analysis of Quantum Programs},
+  author       = {Xia, Shangzhou and Zhao, Jianjun},
+  year         = 2023,
+  booktitle    = {2023 IEEE/ACM 4th International Workshop on Quantum Software Engineering (Q-SE)},
+  pages        = {42--49},
+  doi          = {10.1109/Q-SE59154.2023.00013},
+  keywords     = {Computer languages;Codes;Quantum entanglement;Conferences;Qubit;Software;Security;entanglement analysis;quantum programming;Q#}
+}
+
+@misc{unk_2025_Quantum_OSS,
+  title        = {2025 Quantum Open Source Survey},
+  year         = 2025,
+  howpublished = {\url{https://unitaryfoundation.github.io/survey-2025/}}
+}
+
+@article{Fu_Quipper_C_2025,
+  title        = {Proto-Quipper with Reversing and Control},
+  author       = {Fu, Peng and Kishida, Kohei and Ross, Neil J. and Selinger, Peter},
+  year         = 2025,
+  month        = aug,
+  journal      = {Electronic Proceedings in Theoretical Computer Science},
+  publisher    = {Open Publishing Association},
+  volume       = 426,
+  pages        = {1--22},
+  doi          = {10.4204/eptcs.426.1},
+  issn         = {2075-2180},
+  url          = {http://dx.doi.org/10.4204/EPTCS.426.1}
+}
+
+
+@inproceedings{Sofge_2008_Survey,
+  author = {Sofge, Donald A.},
+  title = {A Survey of Quantum Programming Languages: History, Methods, and Tools},
+  year = {2008},
+  isbn = {9780769530857},
+  publisher = {IEEE Computer Society},
+  address = {USA},
+  url = {https://doi.org/10.1109/ICQNM.2008.15},
+  doi = {10.1109/ICQNM.2008.15},
+  abstract = {Quantum computer programming is emerging as a new subject domain from multidisciplinary research in quantum computing, computer science, mathematics (especially quantum logic, lambda calculi, and linear logic), and engineering attempts to build the first non-trivial quantum computer. This paper briefly surveys the history, methods, and proposed tools for programming quantum computers circa late 2007. It is intended to provide an extensive but non-exhaustive look at work leading up to the current state-of-the-art in quantum computer programming. Further, it is an attempt to analyze the needed programming tools for quantum programmers, to use this analysis to predict the direction in which the field is moving, and to make recommendations for further development of quantum programming language tools.},
+  booktitle = {Proceedings of the Second International Conference on Quantum, Nano and Micro Technologies (ICQNM 2008)},
+  pages = {66--71},
+  numpages = {6},
+  keywords = {quantum computing, linear logic, lambda calculus, imperative programming, functional programming},
+  series = {ICQNM '08}
+}
+
+@inproceedings{Henderson_2023_automatic_oracle_generation,
+  author = {Jessie M. Henderson and Elena R. Henderson and Aviraj Sinha and Mitchell A. Thornton and D. Michael Miller},
+  title = {{Automated quantum oracle synthesis with a minimal number of qubits}},
+  volume = {12517},
+  booktitle = {Quantum Information Science, Sensing, and Computation XV},
+  editor = {Eric Donkor and Michael Hayduk and Michael L. Fanto and Carlos M. Torres Jr.},
+  organization = {International Society for Optics and Photonics},
+  publisher = {SPIE},
+  pages = {1251706},
+  keywords = {quantum computing, quantum oracle, quantum circuit synthesis, automated quantum oracle circuit design},
+  year = {2023},
+  doi = {10.1117/12.2663240},
+  URL = {https://doi.org/10.1117/12.2663240}
+}
+
+@article{Detsch_1992_Algorithm,
+    author = {Deutsch, David and Jozsa, Richard},
+    title = {Rapid solution of problems by quantum computation},
+    journal = {Proceedings of the Royal Society of London. Series A: Mathematical and Physical Sciences},
+    volume = {439},
+    number = {1907},
+    pages = {553-558},
+    year = {1992},
+    month = {12},
+    abstract = {A class of problems is described which can be solved more efficiently by quantum computation than by any classical or stochastic method. The quantum computation solves the problem with certainty in exponentially less time than any classical deterministic computation.},
+    issn = {0962-8444},
+    doi = {10.1098/rspa.1992.0167},
+    url = {https://doi.org/10.1098/rspa.1992.0167},
+    eprint = {https://royalsocietypublishing.org/rspa/article-pdf/439/1907/553/68698/rspa.1992.0167.pdf},
+}
+
+
+@article{Yuan_2022_Twist,
+  author = {Yuan, Charles and McNally, Christopher and Carbin, Michael},
+  title = {Twist: sound reasoning for purity and entanglement in Quantum programs},
+  year = {2022},
+  issue_date = {January 2022},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  volume = {6},
+  number = {POPL},
+  url = {https://doi.org/10.1145/3498691},
+  doi = {10.1145/3498691},
+  journal = {Proc. ACM Program. Lang.},
+  month = jan,
+  articleno = {30},
+  numpages = {32},
+  keywords = {entanglement, purity, quantum programming, type systems}
+}
+
+@misc{Yuan_2025_Cobble,
+  title={Cobble: Compiling Block Encodings for Quantum Computational Linear Algebra}, 
+  author={Charles Yuan},
+  year={2025},
+  eprint={2511.01736},
+  archivePrefix={arXiv},
+  primaryClass={cs.PL},
+  url={https://arxiv.org/abs/2511.01736}, 
+}
+
+
+@article{Bennet_Wooters_1993_Teleport,
+  title = {Teleporting an unknown quantum state via dual classical and Einstein-Podolsky-Rosen channels},
+  author = {Bennett, Charles H. and Brassard, Gilles and Cr\'epeau, Claude and Jozsa, Richard and Peres, Asher and Wootters, William K.},
+  journal = {Phys. Rev. Lett.},
+  volume = {70},
+  issue = {13},
+  pages = {1895--1899},
+  numpages = {0},
+  year = {1993},
+  month = {Mar},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevLett.70.1895},
+  url = {https://link.aps.org/doi/10.1103/PhysRevLett.70.1895}
+}
+
+
+
+@inproceedings{De_Moura_2021_lean4,
+    author = {de~Moura, Leonardo and Ullrich, Sebastian},
+    title = {The Lean 4 Theorem Prover and Programming Language},
+    year = {2021},
+    isbn = {978-3-030-79875-8},
+    publisher = {Springer-Verlag},
+    address = {Berlin, Heidelberg},
+    url = {https://doi.org/10.1007/978-3-030-79876-5_37},
+    doi = {10.1007/978-3-030-79876-5_37},
+    abstract = {Lean 4 is a reimplementation of the Lean interactive theorem prover (ITP) in Lean itself. It addresses many shortcomings of the previous versions and contains many new features. Lean 4 is fully extensible: users can modify and extend the parser, elaborator, tactics, decision procedures, pretty printer, and code generator. The new system has a hygienic macro system custom-built for ITPs. It contains a new typeclass resolution procedure based on tabled resolution, addressing significant performance problems reported by the growing user base. Lean 4 is also an efficient functional programming language based on a novel programming paradigm called functional but in-place. Efficient code generation is crucial for Lean users because many write custom proof automation procedures in Lean itself.},
+    booktitle = {Automated Deduction --- CADE 28: 28th International Conference on Automated Deduction, Virtual Event, July 12–15, 2021, Proceedings},
+    pages = {625--635},
+    numpages = {11}
+}
+
+@article{Hietala_2023_voqc,
+    author = {Hietala, Kesha and Rand, Robert and Li, Liyi and Hung, Shih-Han and Wu, Xiaodi and Hicks, Michael},
+    title = {A Verified Optimizer for Quantum Circuits},
+    year = {2023},
+    issue_date = {September 2023},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    volume = {45},
+    number = {3},
+    issn = {0164-0925},
+    url = {https://doi.org/10.1145/3604630},
+    doi = {10.1145/3604630},
+    abstract = {We present voqc, the first verified optimizer for quantum circuits, written using the Coq proof assistant. Quantum circuits are expressed as programs in a simple, low-level language called sqir, a small quantum intermediate representation, which is deeply embedded in Coq. Optimizations and other transformations are expressed as Coq functions, which are proved correct with respect to a semantics of sqir programs. sqir programs denote complex-valued matrices, as is standard in quantum computation, but we treat matrices symbolically to reason about programs that use an arbitrary number of quantum bits. sqir’s careful design and our provided automation make it possible to write and verify a broad range of optimizations in voqc, including full-circuit transformations from cutting-edge optimizers.},
+    journal = {ACM Trans. Program. Lang. Syst.},
+    month = sep,
+    articleno = {18},
+    numpages = {35},
+    keywords = {Formal verification, quantum computing, circuit optimization, certified compilation}
+}
+
+
+@inproceedings{Leroy_2016_compcert,
+  TITLE = {{CompCert - A Formally Verified Optimizing Compiler}},
+  AUTHOR = {Leroy, Xavier and Blazy, Sandrine and K{\"a}stner, Daniel and Schommer, Bernhard and Pister, Markus and Ferdinand, Christian},
+  URL = {https://inria.hal.science/hal-01238879},
+  BOOKTITLE = {{ERTS 2016: Embedded Real Time Software and Systems, 8th European Congress}},
+  ADDRESS = {Toulouse, France},
+  ORGANIZATION = {{SEE}},
+  YEAR = {2016},
+  MONTH = Jan,
+  PDF = {https://inria.hal.science/hal-01238879v1/file/erts2016_compcert.pdf},
+  HAL_ID = {hal-01238879},
+  HAL_VERSION = {v1},
+}
+
+@misc{rocq,
+  title = "The {Coq} Reference Manual -- Release 8.19.0",
+  author = "{The Coq Development Team}",
+  year = "2024",
+  howpublished = "\url{https://coq.inria.fr/doc/V8.19.0/refman}"
+}
+
+@inproceedings{Rand_Paykin_2018_phantom_types,
+  author = {Rand, Robert and Paykin, Jennifer and Zdancewic, Steve},
+  booktitle = {The Fourth International Workshop on Coq for Programming Languages},
+  title = {Phantom Types for Quantum Programs},
+  year = {2018}
+}
+
+@inproceedings{mathlib, 
+  series={POPL ’20},
+  title={The lean mathematical library},
+  url={http://dx.doi.org/10.1145/3372885.3373824},
+  DOI={10.1145/3372885.3373824},
+  booktitle={Proceedings of the 9th ACM SIGPLAN International Conference on Certified Programs and Proofs},
+  publisher={ACM},
+  author={The mathlib Community},
+  year={2020},
+  month=Jan, pages={367–381},
+  collection={POPL ’20} 
+}
+
+

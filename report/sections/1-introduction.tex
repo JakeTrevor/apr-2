@@ -1,0 +1,100 @@
+
+\section{Introduction}
+
+Hybrid quantum-classical computation is any computation that mixes quantum and classical components.
+% 
+Many algorithms rely on the principles of mixed computation to work.
+% 
+For instance, repeat-until-success algorithms involve retrying a state preparation procedure
+until a measurement succeeds. 
+% 
+Specialised languages are required to express hybrid computation, 
+as care must be taken to handle the quantum and classical parts properly and separately. 
+% 
+In the course of my research, I found that languages that address this problem properly are scarce. 
+% 
+OpenQASM3 \cite{Cross_2022_OpenQASM3} includes some basic quantum feedback mechanisms, but it is difficult to formally study,
+as it lacks a formally specified semantics.
+% 
+Quil \cite{Smith_2016_Quil} does have some formal specification as a low-level quantum PL, but the semantics given is incomplete.
+% 
+In contrast, Silq \cite{Bichsel_2020_Silq} has a formal semantics and a type system which gives guarantees of safe qubit usage,
+as well as mechanisms for working with classical data.
+% 
+However, no compiler for Silq currently exists, and the complexity of the language makes 
+an implementation in the near future unlikely.
+% 
+The highest standard of formal specification can be found in languages like QWIRE \cite{Paykin_2017_QWIRE, Rand_2019_ReQWIRE},
+which is formally verified in Rocq \cite{rocq}.
+%
+However, QWIRE is not well suited to discussing hybrid programs, as it lacks control primitives like conditions or loops.
+
+
+Further, I found that a range of possible expressivenesses exist, based on the kinds of control flow one permits in the language.
+% 
+No semantic work has been done on this stratification, which I believe could be of great use in practise.
+% 
+Mechanised semantics is a well understood technique, and has been used to build verified compilers
+for classical languages (CompCert C \cite{Leroy_2016_compcert}) and even quantum languages (VoQC \cite{Hietala_2023_voqc}).
+% 
+However, the work in verified quantum compilation is much less well developed than its counterpart in the classical world.
+% 
+In particular, VoQC works only on circuit optimisation, and cannot deal with more complex or expressive hybrid languages.
+% 
+I believe this is an important problem to address.
+
+
+\subsection{Thesis Statement}
+
+\vspace{5mm}
+
+\noindent\fbox{
+    \parbox{\textwidth}{
+        By giving formal semantics to a family of languages for quantum computers, related by the
+        addition of simple features (e.g. individual commands), we will provide safe,
+        mathematically grounded implementations of compiler transformations and analyses for
+        quantum programs.
+    }
+}
+
+\subsection{Research goals}
+
+In my work thus far, I have surveyed the state of the art in quantum programming language research, and identified a key gap.
+% 
+The semantics of low-level languages, particularly hybrid low-level languages with classical control flow, is not well studied. 
+% 
+I have begun work mechanising semantics for a family of languages, with varying expressive capabilities. 
+% 
+The aim is to provide a strong foundation for future research, particularly for 
+example in verifying optimisations. 
+% 
+Thus, I derive the following research questions:
+
+\begin{enumerate}[label={\textbf {RQ\arabic*}}]
+    \item \label{goal-semantics-simple} Can we extend our work mechanising semantics for quantum programming languages, 
+    towards more expressive languages?
+    \item \label{goal-optimisation} Can we implement an ``optimisation lifting'' system?
+    This should allow one to specify and verify optimisations on more primitive languages in the family, 
+    and \emph{lift them up} such that we may get a likewise verified optimisation on the more powerful languages.
+    How should the correctness of such a system be specified?
+    \item \label{goal-optimisation-specific} How can we leverage this semantic framework to implement verified optimisation for hybrid programs?
+    % 
+    Can we verify a collection of optimisations (likely as rewrite rules) on the primitive languages 
+    and demonstrate their effectiveness on the more powerful members of the language family empirically?
+\end{enumerate}
+
+\subsection{Report Structure}
+The rest of the report will be structured as follows. 
+% 
+First, in \cref{background} I will cover a brief, general background in quantum computing.
+% 
+Moving on, in \cref{work} I will give an overview of my work to date, 
+the primary form of this being a lean formalisation of the semantics of a family of quantum programming languages.
+% 
+I will then move on to discuss my plan for the remainder of my Ph.D. in \cref{plan}, discussing how I will
+address the goals I set out above. 
+% 
+I will briefly touch on other activities tangential 
+to my research but highly relevant to my own personal development in \cref{outreach}. 
+% 
+Finally I will conclude the report in \cref{conclusion}.
